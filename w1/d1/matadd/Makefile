@@ -3,18 +3,21 @@ OBJS	= $(SRCS:.c=.o)
 TARGET	= madd.$(CC)
 
 CC	= gcc
-INCS	= 
+INCS	=
 DBG	= -g
 OPT	= -O3
-PARA	= 
+PARA	=
 CFLAGS	= $(DBG) $(OPT) $(PARA) $(XOPTS)
 
-LIBS	= 
+LIBS	=
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
+
+run: all
+	./$(TARGET)
 
 clean:
 	@/bin/rm -f $(OBJS) *~ core*
