@@ -37,3 +37,9 @@ cd HPC/w1/d1/ex1_4 # go to directory with makefile
 ls # ensure makefile, src and bin are present
 make run # compile src files and run them
 ```
+
+## Next up
+#### Get CBLAS to run within C
+![cblas.png](cblas.png)
+
+#### Do matrix multiplication with `dgemm`. See Ex5.
