@@ -45,15 +45,16 @@ void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
     }
   }
 }
+
 void matmult_mkn(int m, int n, int k, double **A, double **B, double **C)
 {
   int i, j, p;
   for (i = 0; i < m; i++)
   {
-    for (j = 0; j < n; j++)
+    C[i][j] = 0;
+    for (p = 0; p < k; p++)
     {
-      C[i][j] = 0;
-      for (p = 0; p < k; p++)
+      for (j = 0; j < n; j++)
       {
         C[i][j] += A[i][p] * B[p][j];
       }
