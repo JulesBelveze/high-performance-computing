@@ -32,9 +32,40 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
     }
 }
 
+void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
+{
+  int i, j, p;
+  for (i = 0; i < m; i++)
+  {
+    for (j = 0; j < n; j++)
+    {
+      C[i][j] = 0;
+      for (p = 0; p < k; p++)
+      {
+        C[i][j] += A[i][p] * B[p][j];
+      }
+    }
+  }
+}
+void matmult_mkn(int m, int n, int k, double **A, double **B, double **C)
+{
+  int i, j, p;
+  for (i = 0; i < m; i++)
+  {
+    for (j = 0; j < n; j++)
+    {
+      C[i][j] = 0;
+      for (p = 0; p < k; p++)
+      {
+        C[i][j] += A[i][p] * B[p][j];
+      }
+    }
+  }
+}
+
 void matmult_lib(int m, int n, int k, double **A, double **B, double **C)
 {
-    cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], k, B[0], n, 0.0, C[0], n);
+  cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], k, B[0], n, 0.0, C[0], n);
 }
 
 void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs)
