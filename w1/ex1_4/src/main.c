@@ -274,7 +274,34 @@ void timerun_mat_mat_mult()
   }
 }
 
+void matmult_nat(m,n,k,A,B,C)
+{
+  // print_matrix(m,k,A);
+  // print_matrix(k,n,B);
+}
+
 int main()
 {
+  int m = 3;
+  int n = 2;
+  int k = 4;
+  int A[m][k];
+  int B[k][n];
+  int C[m][n];
+  printf("--Matrix A (%dx%d):\n",m,k);
+  generate_matrix(m,k,A);
+  print_matrix(m,k,A);
+  printf("--Matrix B (%dx%d):\n",k,n);
+  generate_matrix(k,n,B);
+  print_matrix(k,n,B);
+  printf("--Matrix C (%dx%d) via mat_mat_mult:\n",m,n);
+  mat_mat_mult(m,k,A,k,n,B,C);
+  print_matrix(m,n,C);
+
+  printf("--Matrix C (%dx%d) via matmult_nat:\n",m,n);
+  matmult_nat(m,n,k,A,B,C); // should use same as matmatmult
+  // printf("--Matrix C (%dx%d) via matmult_lib:\n",m,n);
+  // matmult_lib(m,n,k,A,B,C); // should use DGEMM
+
   return 0;
 }
