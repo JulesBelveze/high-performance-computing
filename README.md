@@ -38,8 +38,17 @@ ls # ensure makefile, src and bin are present
 make run # compile src files and run them
 ```
 
-## Next up
+## Running on the HPC system with driver
+Pass args `n`,`k`,`m`. Returns:
+* memory footprint
+* flops
+* zero (should be zero)
+* some hash
+
+## To Do:
 #### Get CBLAS to run within C
-![cblas.png](cblas.png)
+![images/cblas.png](images/cblas.png)
 
 #### Do matrix multiplication with `dgemm`. See Ex5.
+
+#### Do the assignment
