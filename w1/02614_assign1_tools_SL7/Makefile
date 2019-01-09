@@ -19,4 +19,4 @@ clean:
 
 
 run:
-	make && ./matmult_c.gcc nat 50 60 70
+	make && ./matmult_c.gcc lib 50 60 70
