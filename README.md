@@ -52,3 +52,11 @@ Pass args `n`,`k`,`m`. Returns:
 #### Do matrix multiplication with `dgemm`. See Ex5.
 
 #### Do the assignment
+
+## Implemented Functions
+
+### Matrix Generate
+![w1_matrix_generate](images/w1_matrix_generate.png)
+
+### Matrix multiply
+![w1_matrix_matrix_mult](images/w1_matrix_matrix_mult.png)
