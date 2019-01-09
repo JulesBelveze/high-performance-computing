@@ -19,4 +19,4 @@ clean:
 
 
 run:
-	make && ./matmult_c.gcc lib 90 110 50
+	make && ./matmult_c.gcc lib 200 200 200 
