@@ -32,36 +32,7 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 
 void matmult_lib(int m, int n, int k, double **A, double **B, double **C)
 {
-    int lda, ldb, ldc, j, i;
-
-    if (k > m)
-    {
-        lda = k;
-    }
-    else
-    {
-        lda = m;
-    }
-
-    if (n > k)
-    {
-        ldb = n;
-    }
-    else
-    {
-        ldb = k;
-    }
-
-    if (m > n)
-    {
-        ldc = m;
-    }
-    else
-    {
-        ldc = n;
-    }
-
-    cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], lda, B[0], ldb, 0.0, C[0], ldc);
+    cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], k, B[0], n, 0.0, C[0], n);
 }
 
 void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs)
