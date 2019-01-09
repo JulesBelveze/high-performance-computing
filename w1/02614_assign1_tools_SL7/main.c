@@ -300,7 +300,8 @@ int main()
 
   printf("--Matrix C (%dx%d) via matmult_nat:\n",m,n);
   matmult_nat(m,n,k,A,B,C); // should use same as matmatmult
-  // printf("--Matrix C (%dx%d) via matmult_lib:\n",m,n);
+  print_matrix(m,n,C);
+  printf("--Matrix C (%dx%d) via matmult_lib:\n",m,n);
   // matmult_lib(m,n,k,A,B,C); // should use DGEMM
 
   return 0;
