@@ -1,9 +1,9 @@
 #include "matmult.h"
 #include "stdio.h"
 #if defined(__MACH__) && defined(__APPLE__)
-    #include <Accelerate/Accelerate.h>
+#include <Accelerate/Accelerate.h>
 #else
-    #include <cblas.h>
+#include <cblas.h>
 #endif
 
 void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
@@ -14,12 +14,12 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
     // Matrix C has therefore m rows and n cols
 
     int i, j, p;
-
     // computing and printing matrix product
     for (i = 0; i < m; i++)
     {
         for (j = 0; j < n; j++)
         {
+            C[i][j] = 0;
             for (p = 0; p < k; p++)
             {
                 C[i][j] += A[i][p] * B[p][j];
@@ -30,18 +30,25 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
     }
 }
 
-void matmult_lib(int m,int n,int k,double **A,double **B, double **C){
+void matmult_lib(int m, int n, int k, double **A, double **B, double **C)
+{
     int lda, ldb;
 
-    if(n > m){
+    if (n > m)
+    {
         lda = n;
-    }else{
+    }
+    else
+    {
         lda = m;
     }
 
-    if(m > k){
+    if (m > k)
+    {
         ldb = m;
-    }else{
+    }
+    else
+    {
         ldb = k;
     }
 
@@ -50,5 +57,4 @@ void matmult_lib(int m,int n,int k,double **A,double **B, double **C){
 
 void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs)
 {
-
 }
