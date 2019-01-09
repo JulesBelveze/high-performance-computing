@@ -1,5 +1,10 @@
 #include "matmult.h"
 #include "stdio.h"
+#if defined(__MACH__) && defined(__APPLE__)
+    #include <Accelerate/Accelerate.h>
+#else
+    #include <cblas.h>
+#endif
 
 void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 {
@@ -10,24 +15,6 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 
     int i, j, p;
 
-    // feeding matrix A
-    for (i = 0; i < m; i++)
-    {
-        for (j = 0; j < k; j++)
-        {
-            A[i][j] = 2.0;
-        }
-    }
-
-    // feeding matrix B
-    for (i = 0; i < k; i++)
-    {
-        for (j = 0; j < n; j++)
-        {
-            B[i][j] = 2.0;
-        }
-    }
-
     // computing and printing matrix product
     for (i = 0; i < m; i++)
     {
@@ -37,12 +24,31 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
             {
                 C[i][j] += A[i][p] * B[p][j];
             }
-            printf("%.3f  ", C[i][j]);
+            // printf("%.3f  ", C[i][j]);
         }
-        printf("\n");
+        // printf("\n");
     }
+}
+
+void matmult_lib(int m,int n,int k,double **A,double **B, double **C){
+    int lda, ldb;
+
+    if(n > m){
+        lda = n;
+    }else{
+        lda = m;
+    }
+
+    if(m > k){
+        ldb = m;
+    }else{
+        ldb = k;
+    }
+
+    cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], lda, B[0], ldb, 0.0, C[0], n);
 }
 
 void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs)
 {
+
 }
