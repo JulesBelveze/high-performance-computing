@@ -3,7 +3,7 @@
 #BSUB -o matmult_%J.out
 #BSUB -e matmult_%J.err
 #BSUB -q hpcintro
-#BSUB -W 200 -R "rusage[mem=5012MB]"
+#BSUB -W 2000 -R "rusage[mem=5012MB]"
 
 timestamp=`date +"%T"`
 
