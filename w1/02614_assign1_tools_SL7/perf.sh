@@ -4,7 +4,7 @@ timestamp=`date +"%T"`
 
 COMPILER_OPTIONS=(O0 O1 O2 O3 Os Og Ofast)
 
-FUNC=(knm nkm kmn)
+FUNC=(mnk mkn nmk nkm kmn knm)
 
 mkdir "${timestamp}"
 for f in "${FUNC}"; do
