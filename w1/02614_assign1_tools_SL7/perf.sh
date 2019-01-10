@@ -3,8 +3,8 @@
 #BSUB -o matmult_%J.out
 #BSUB -e matmult_%J.err
 #BSUB -q hpcintro
-#BSUB -W 2000000 -R "rusage[mem=15012MB]"
-#BSUB -n 6
+#BSUB -W 2000000 -R "rusage[mem=512MB]"
+#BSUB -n 1
 
 echo "Starting Jobs"
 timestamp=`date +"%T"`
@@ -21,9 +21,10 @@ for c in "${COMPILER_OPTIONS[@]}"; do
 		for f in "${FUNCTIONS[@]}"; do
 			mkdir ${timestamp}/${c}/${f}
 			for i in `seq 1 80 2000`;do
-				./matmult_c.gcc ${f} $i $i $i >>${timestamp}/${c}/${f}/${i}.txt 2>&1 & WAITPIDS="$WAITPIDS "$!
+      	for j in `seq 1 1 5`;do
+				  ./matmult_c.gcc ${f} $i $i $i >>${timestamp}/${c}/${f}/${i}_${j}.txt 2>&1
+        done
 			done
 	done
-	wait $WAITPIDS
 done
 echo "DONE"
