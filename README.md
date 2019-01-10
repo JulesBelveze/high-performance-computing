@@ -28,6 +28,28 @@ bjobs # time elapsed
 bstat # time remaining
 ```
 
+## Running without makefile
+somefile.c has the following code:
+```c
+#include <stdio.h>
+main() {
+  printf("Hello World\n");
+}
+```
+
+To compile and run the file without a makefile:
+
+```bash
+$ gcc -o somefile somefile.c
+$ ./somefile
+$ rm somefile
+```
+
+Can also be done in one line:
+```bash
+$ gcc -o somefile somefile.c && ./somefile && rm somefile
+```
+
 ## Running
 
 Make sure the makefile is right!
