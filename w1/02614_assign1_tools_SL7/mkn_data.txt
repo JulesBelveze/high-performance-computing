@@ -1,0 +1,131 @@
+   234.375    354.147 0 # matmult_mkn
+   337.500    358.237 0 # matmult_mkn
+   459.375    358.838 0 # matmult_mkn
+   600.000    358.934 0 # matmult_mkn
+   759.375    359.467 0 # matmult_mkn
+   937.500    359.480 0 # matmult_mkn
+  1134.375    360.073 0 # matmult_mkn
+  1350.000    361.054 0 # matmult_mkn
+  1584.375    361.547 0 # matmult_mkn
+  1837.500    361.113 0 # matmult_mkn
+  2109.375    362.021 0 # matmult_mkn
+  2400.000    362.252 0 # matmult_mkn
+  2709.375    361.831 0 # matmult_mkn
+  3037.500    362.656 0 # matmult_mkn
+  3384.375    362.888 0 # matmult_mkn
+  3750.000    362.687 0 # matmult_mkn
+  4134.375    362.869 0 # matmult_mkn
+  4537.500    362.218 0 # matmult_mkn
+  4959.375    362.450 0 # matmult_mkn
+  5400.000    362.820 0 # matmult_mkn
+  5859.375    362.877 0 # matmult_mkn
+  6337.500    363.073 0 # matmult_mkn
+  6834.375    363.322 0 # matmult_mkn
+  7350.000    363.310 0 # matmult_mkn
+  7884.375    363.134 0 # matmult_mkn
+  8437.500    363.354 0 # matmult_mkn
+  9009.375    363.145 0 # matmult_mkn
+  9600.000    363.086 0 # matmult_mkn
+ 10209.375    363.325 0 # matmult_mkn
+ 10837.500    363.517 0 # matmult_mkn
+ 11484.375    363.564 0 # matmult_mkn
+ 12150.000    363.607 0 # matmult_mkn
+ 12834.375    363.641 0 # matmult_mkn
+ 13537.500    363.705 0 # matmult_mkn
+ 14259.375    363.779 0 # matmult_mkn
+ 15000.000    363.877 0 # matmult_mkn
+ 15759.375    363.846 0 # matmult_mkn
+ 16537.500    363.833 0 # matmult_mkn
+ 17334.375    363.904 0 # matmult_mkn
+ 18150.000    364.032 0 # matmult_mkn
+ 18984.375    364.031 0 # matmult_mkn
+ 19837.500    363.967 0 # matmult_mkn
+ 20709.375    364.110 0 # matmult_mkn
+ 21600.000    363.886 0 # matmult_mkn
+ 22509.375    363.899 0 # matmult_mkn
+ 23437.500    363.938 0 # matmult_mkn
+ 24384.375    364.130 0 # matmult_mkn
+ 25350.000    364.130 0 # matmult_mkn
+ 26334.375    364.187 0 # matmult_mkn
+ 27337.500    364.280 0 # matmult_mkn
+ 28359.375    364.195 0 # matmult_mkn
+ 29400.000    364.237 0 # matmult_mkn
+ 30459.375    364.374 0 # matmult_mkn
+ 31537.500    364.219 0 # matmult_mkn
+ 32634.375    364.250 0 # matmult_mkn
+ 33750.000    364.021 0 # matmult_mkn
+ 34884.375    364.268 0 # matmult_mkn
+ 36037.500    364.295 0 # matmult_mkn
+ 37209.375    364.084 0 # matmult_mkn
+ 38400.000    363.928 0 # matmult_mkn
+ 39609.375    364.363 0 # matmult_mkn
+ 40837.500    364.217 0 # matmult_mkn
+ 42084.375    364.002 0 # matmult_mkn
+ 43350.000    364.173 0 # matmult_mkn
+ 44634.375    363.683 0 # matmult_mkn
+ 45937.500    363.880 0 # matmult_mkn
+ 47259.375    363.631 0 # matmult_mkn
+ 48600.000    363.521 0 # matmult_mkn
+ 49959.375    363.579 0 # matmult_mkn
+ 51337.500    363.646 0 # matmult_mkn
+ 52734.375    363.335 0 # matmult_mkn
+ 54150.000    363.468 0 # matmult_mkn
+ 55584.375    362.657 0 # matmult_mkn
+ 57037.500    363.150 0 # matmult_mkn
+ 58509.375    362.808 0 # matmult_mkn
+ 60000.000    362.375 0 # matmult_mkn
+ 61509.375    362.676 0 # matmult_mkn
+ 63037.500    361.943 0 # matmult_mkn
+ 64584.375    362.259 0 # matmult_mkn
+ 66150.000    362.276 0 # matmult_mkn
+ 67734.375    361.704 0 # matmult_mkn
+ 69337.500    361.541 0 # matmult_mkn
+ 70959.375    362.076 0 # matmult_mkn
+ 72600.000    361.784 0 # matmult_mkn
+ 74259.375    361.920 0 # matmult_mkn
+ 75937.500    361.788 20 # matmult_mkn
+ 77634.375    361.905 38 # matmult_mkn
+User defined signal 2
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n-62-21-98>
+Subject: Job 1697664: <NONAME> in cluster <dcc> Exited
+
+Job <NONAME> was submitted from host <n-62-13-2> by user <s182291> in cluster <dcc> at Wed Jan  9 21:04:08 2019
+Job was executed on host(s) <n-62-21-98>, in queue <hpc>, as user <s182291> in cluster <dcc> at Wed Jan  9 21:04:08 2019
+</zhome/f5/8/134816> was used as the home directory.
+</zhome/f5/8/134816/Desktop/HPC/w1/02614_assign1_tools_SL7> was used as the working directory.
+Started at Wed Jan  9 21:04:08 2019
+Terminated at Wed Jan  9 21:19:22 2019
+Results reported at Wed Jan  9 21:19:22 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+for i in `seq 100 20 2000`
+do
+    ./matmult_c.gcc mkn $i $i $i
+done
+
+
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with exit code 140.
+
+Resource usage summary:
+
+    CPU time :                                   911.00 sec.
+    Max Memory :                                 120 MB
+    Average Memory :                             73.67 MB
+    Total Requested Memory :                     1024.00 MB
+    Delta Memory :                               904.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   913 sec.
+    Turnaround time :                            914 sec.
+
+The output (if any) is above this job summary.
+

@@ -1,0 +1,120 @@
+   234.375    333.918 0 # matmult_nkm
+   337.500    339.967 0 # matmult_nkm
+   459.375    327.045 0 # matmult_nkm
+   600.000    294.299 0 # matmult_nkm
+   759.375    291.783 0 # matmult_nkm
+   937.500    282.826 0 # matmult_nkm
+  1134.375    265.176 0 # matmult_nkm
+  1350.000    269.109 0 # matmult_nkm
+  1584.375    267.630 0 # matmult_nkm
+  1837.500    273.037 0 # matmult_nkm
+  2109.375    264.913 0 # matmult_nkm
+  2400.000    258.126 0 # matmult_nkm
+  2709.375    262.222 0 # matmult_nkm
+  3037.500    272.469 0 # matmult_nkm
+  3384.375    259.130 0 # matmult_nkm
+  3750.000    269.059 0 # matmult_nkm
+  4134.375    258.197 0 # matmult_nkm
+  4537.500    268.887 0 # matmult_nkm
+  4959.375    256.201 0 # matmult_nkm
+  5400.000    240.080 0 # matmult_nkm
+  5859.375    252.883 0 # matmult_nkm
+  6337.500    265.291 0 # matmult_nkm
+  6834.375    254.241 0 # matmult_nkm
+  7350.000    258.336 0 # matmult_nkm
+  7884.375    258.568 0 # matmult_nkm
+  8437.500    263.503 0 # matmult_nkm
+  9009.375    269.207 0 # matmult_nkm
+  9600.000    186.913 0 # matmult_nkm
+ 10209.375    257.861 0 # matmult_nkm
+ 10837.500    268.432 0 # matmult_nkm
+ 11484.375    258.490 0 # matmult_nkm
+ 12150.000    256.475 0 # matmult_nkm
+ 12834.375    266.866 0 # matmult_nkm
+ 13537.500    273.279 0 # matmult_nkm
+ 14259.375    267.925 0 # matmult_nkm
+ 15000.000    227.259 0 # matmult_nkm
+ 15759.375    267.879 0 # matmult_nkm
+ 16537.500    287.826 0 # matmult_nkm
+ 17334.375    274.194 0 # matmult_nkm
+ 18150.000    253.180 0 # matmult_nkm
+ 18984.375    269.652 0 # matmult_nkm
+ 19837.500    281.912 0 # matmult_nkm
+ 20709.375    271.212 0 # matmult_nkm
+ 21600.000    190.829 0 # matmult_nkm
+ 22509.375    270.451 0 # matmult_nkm
+ 23437.500    292.285 0 # matmult_nkm
+ 24384.375    258.470 0 # matmult_nkm
+ 25350.000    243.692 0 # matmult_nkm
+ 26334.375    277.454 0 # matmult_nkm
+ 27337.500    288.122 0 # matmult_nkm
+ 28359.375    278.665 0 # matmult_nkm
+ 29400.000    199.368 0 # matmult_nkm
+ 30459.375    272.885 0 # matmult_nkm
+ 31537.500    279.741 0 # matmult_nkm
+ 32634.375    256.732 0 # matmult_nkm
+ 33750.000    232.034 0 # matmult_nkm
+ 34884.375    246.407 0 # matmult_nkm
+ 36037.500    258.062 0 # matmult_nkm
+ 37209.375    233.059 0 # matmult_nkm
+ 38400.000    174.475 0 # matmult_nkm
+ 39609.375    213.844 0 # matmult_nkm
+ 40837.500    227.568 0 # matmult_nkm
+ 42084.375    192.844 0 # matmult_nkm
+ 43350.000    193.167 0 # matmult_nkm
+ 44634.375    179.899 0 # matmult_nkm
+ 45937.500    206.888 0 # matmult_nkm
+ 47259.375    168.733 0 # matmult_nkm
+ 48600.000    165.612 0 # matmult_nkm
+ 49959.375    168.521 0 # matmult_nkm
+ 51337.500    201.976 0 # matmult_nkm
+ 52734.375    162.223 0 # matmult_nkm
+ 54150.000    179.990 0 # matmult_nkm
+ 55584.375    162.520 0 # matmult_nkm
+ 57037.500    203.974 0 # matmult_nkm
+ 58509.375    181.602 0 # matmult_nkm
+ 60000.000    196.577 0 # matmult_nkm
+User defined signal 2
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n-62-21-98>
+Subject: Job 1697666: <NONAME> in cluster <dcc> Exited
+
+Job <NONAME> was submitted from host <n-62-13-2> by user <s182291> in cluster <dcc> at Wed Jan  9 21:04:53 2019
+Job was executed on host(s) <n-62-21-98>, in queue <hpc>, as user <s182291> in cluster <dcc> at Wed Jan  9 21:04:55 2019
+</zhome/f5/8/134816> was used as the home directory.
+</zhome/f5/8/134816/Desktop/HPC/w1/02614_assign1_tools_SL7> was used as the working directory.
+Started at Wed Jan  9 21:04:55 2019
+Terminated at Wed Jan  9 21:20:23 2019
+Results reported at Wed Jan  9 21:20:23 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+for i in `seq 100 20 2000`
+do
+    ./matmult_c.gcc nkm $i $i $i
+done
+
+
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with exit code 140.
+
+Resource usage summary:
+
+    CPU time :                                   926.00 sec.
+    Max Memory :                                 94 MB
+    Average Memory :                             60.68 MB
+    Total Requested Memory :                     1024.00 MB
+    Delta Memory :                               930.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   927 sec.
+    Turnaround time :                            930 sec.
+
+The output (if any) is above this job summary.
+
