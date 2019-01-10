@@ -41,6 +41,9 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 
 void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
 {
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
     int i, j, p;
 
     for (i = 0; i < m; i++)
@@ -57,10 +60,16 @@ void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 
 void matmult_mkn(int m, int n, int k, double **A, double **B, double **C)
 {
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
     int i, j, p;
 
     for (i = 0; i < m; i++)
@@ -77,10 +86,16 @@ void matmult_mkn(int m, int n, int k, double **A, double **B, double **C)
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 
 void matmult_nmk(int m, int n, int k, double **A, double **B, double **C)
 {
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
     int i, j, p;
 
     for (i = 0; i < m; i++)
@@ -97,9 +112,15 @@ void matmult_nmk(int m, int n, int k, double **A, double **B, double **C)
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 void matmult_nkm(int m, int n, int k, double **A, double **B, double **C)
 {
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
     int i, j, p;
 
     for (i = 0; i < m; i++)
@@ -116,10 +137,16 @@ void matmult_nkm(int m, int n, int k, double **A, double **B, double **C)
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 
 void matmult_kmn(int m, int n, int k, double **A, double **B, double **C)
 {
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
     int i, j, p;
 
     for (i = 0; i < m; i++)
@@ -136,9 +163,15 @@ void matmult_kmn(int m, int n, int k, double **A, double **B, double **C)
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 void matmult_knm(int m, int n, int k, double **A, double **B, double **C)
 {
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
     int i, j, p;
 
     for (i = 0; i < m; i++)
@@ -155,15 +188,27 @@ void matmult_knm(int m, int n, int k, double **A, double **B, double **C)
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 
 void matmult_lib(int m, int n, int k, double **A, double **B, double **C)
 {
-  cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], k, B[0], n, 0.0, C[0], n);
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
+    cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], k, B[0], n, 0.0, C[0], n);
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 
 void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs)
 {
+    clock_t start, end;
+    int cpu_time_used;
+    start = clock();
     // m : number of rows of A
     // k : number of cols of A and number of rows of B
     // n : number of cols of B
@@ -193,6 +238,9 @@ void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 
 // TODO: This test can be deleted if plots are working
