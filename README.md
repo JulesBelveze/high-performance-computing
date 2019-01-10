@@ -45,18 +45,9 @@ Pass args `n`,`k`,`m`. Returns:
 * zero (should be zero)
 * some hash
 
-## To Do:
-#### Get CBLAS to run within C
-![images/cblas.png](images/cblas.png)
-
-#### Do matrix multiplication with `dgemm`. See Ex5.
-
-#### Do the assignment
-
-## Implemented Functions
-
-### Matrix Generate
-![w1_matrix_generate](images/w1_matrix_generate.png)
-
-### Matrix multiply
-![w1_matrix_matrix_mult](images/w1_matrix_matrix_mult.png)
+## Contents:
+* [Introduction](w1/assignment_text/intro.md)
+* [Native vs Library Matrix Multiplication](w1/assignment_text/natlib.md)
+* [NMK Permutation Analysis](w1/assignment_text/permutation.md)
+* [Matrix Multiplication Block version](w1/assignment_text/blocking.md)
+* [Compiler Optimizations](w1/assignment_text/optimization.md)
