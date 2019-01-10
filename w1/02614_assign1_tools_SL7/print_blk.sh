@@ -8,6 +8,7 @@
 #     echo $runtime
 # done
 
+# data with different block size
 for i in `seq 1 10 151`
 do
     ./matmult_c.gcc blk 1500 1500 1500 $i

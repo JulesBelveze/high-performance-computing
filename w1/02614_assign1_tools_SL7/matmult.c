@@ -1,6 +1,7 @@
 #include "matmult.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #if defined(__MACH__) && defined(__APPLE__)
 #include <Accelerate/Accelerate.h>
 #else
@@ -13,6 +14,8 @@ int MIN(int a, int b){
 
 void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 {
+    clock_t start, end;
+    float cpu_time_used;
     start = clock();
     // m : number of rows of A
     // k : number of cols of A and number of rows of B
