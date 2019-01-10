@@ -38,4 +38,18 @@ plt.show()
 
 #%%
 
+
 #%%
+# ssh to HPC list subdirs
+# ls ~/Documents/HPC/w1/02614_assign1_tools_SL7/15\:02\:26/O0/
+
+# Mount HPC drive, changedir to timestamp directory
+# cd ~/Documents/HPC/w1/02614_assign1_tools_SL7/15:02:26
+
+# Timestamp subdir (O0, O1, O2,... OS) are types of optimization
+# Optmization subdirs (mnk, mkn ... nkm) are types of permuations
+# Permutations subfiles (1_2.txt ... 1921_5.txt) are matrix sizes + repitions.
+# Subfile 481_3.txt is the third repititions of m,n,k = 481.
+# The first n-1 lines are times to be averaged
+# The 5 versions of each file are also be averaged.
+#
