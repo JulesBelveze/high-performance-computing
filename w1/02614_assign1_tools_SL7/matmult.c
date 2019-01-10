@@ -8,14 +8,14 @@
 #include <cblas.h>
 #endif
 
-int MIN(int a, int b){
+int MIN_(int a, int b){
     return (a < b) ? a : b;
 }
 
 void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 {
     clock_t start, end;
-    float cpu_time_used;
+    int cpu_time_used;
     start = clock();
     // m : number of rows of A
     // k : number of cols of A and number of rows of B
@@ -35,8 +35,8 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
         }
     }
     end = clock();
-    cpu_time_used = ((float) (end - start));///
-    printf("%d %f\n",i,cpu_time_used);
+    cpu_time_used = ((int) (end - start));///
+    printf("%d\n",cpu_time_used);
 }
 
 void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
@@ -180,9 +180,9 @@ void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs
     for (i = 0; i < m; i += bs){
         for (j = 0; j < n; j += bs){
             for (p = 0; p < k; p += bs){
-                min_i = MIN(m, i+bs);
-                min_j = MIN(n, j+bs);
-                min_p = MIN(k, p+bs);
+                min_i = MIN_(m, i+bs);
+                min_j = MIN_(n, j+bs);
+                min_p = MIN_(k, p+bs);
                 for (i0 = i; i0 < min_i; i0++){
                     for (p0 = p; p0 < min_p; p0++){
                         for (j0 = j; j0 < min_j; j0++){
@@ -194,3 +194,23 @@ void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs
         }
     }
 }
+
+// TODO: This test can be deleted if plots are working
+// int main()
+// {
+//     clock_t start, end;
+//     int cpu_time_used;
+//     start = clock();
+//     for (int i = 0; i < 100; i++)
+//     {
+//         for (int j = 0; j < i*i; j++)
+//         {
+//             end = clock();
+//         }
+//     }
+//     printf("Hello\n");
+//     end = clock();
+//     cpu_time_used = ((int) (end - start));///
+//     printf("%d\n",cpu_time_used);
+//
+// }
