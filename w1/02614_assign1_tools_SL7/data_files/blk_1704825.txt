@@ -1,211 +1,143 @@
  36621.094     75.274 0 # matmult_blk 1
  52734.375     76.115 0 # matmult_blk 1
  71777.344     77.364 0 # matmult_blk 1
- 
+
  36621.094    484.941 0 # matmult_blk 11
  52734.375    481.646 0 # matmult_blk 11
  71777.344    479.907 0 # matmult_blk 11
- 
+
  36621.094    486.574 0 # matmult_blk 21
  52734.375    484.090 0 # matmult_blk 21
  71777.344    486.108 0 # matmult_blk 21
- 
+
  36621.094    489.947 0 # matmult_blk 31
  52734.375    477.107 0 # matmult_blk 31
  71777.344    474.713 0 # matmult_blk 31
- 
+
  36621.094    481.941 0 # matmult_blk 41
  52734.375    477.850 0 # matmult_blk 41
  71777.344    473.718 0 # matmult_blk 41
- 
+
  36621.094    482.683 0 # matmult_blk 51
  52734.375    480.277 0 # matmult_blk 51
  71777.344    478.296 0 # matmult_blk 51
- 
+
  36621.094    476.371 0 # matmult_blk 61
  52734.375    473.843 0 # matmult_blk 61
  71777.344    476.581 0 # matmult_blk 61
- 
+
  36621.094    481.176 0 # matmult_blk 71
  52734.375    481.937 0 # matmult_blk 71
  71777.344    478.549 0 # matmult_blk 71
- 
+
  36621.094    470.235 0 # matmult_blk 81
  52734.375    470.149 0 # matmult_blk 81
  71777.344    470.945 0 # matmult_blk 81
- 
+
  36621.094    487.491 0 # matmult_blk 91
  52734.375    487.492 0 # matmult_blk 91
  71777.344    486.266 0 # matmult_blk 91
- 
+
  36621.094    476.479 0 # matmult_blk 101
  52734.375    479.362 0 # matmult_blk 101
  71777.344    478.170 0 # matmult_blk 101
- 
+
  36621.094    481.382 0 # matmult_blk 111
  52734.375    481.917 0 # matmult_blk 111
  71777.344    481.767 0 # matmult_blk 111
- 
+
  36621.094    482.305 0 # matmult_blk 121
  52734.375    484.145 0 # matmult_blk 121
  71777.344    483.981 0 # matmult_blk 121
- 
+
  36621.094    484.904 0 # matmult_blk 131
  52734.375    484.725 0 # matmult_blk 131
  71777.344    485.182 0 # matmult_blk 131
- 
+
  36621.094    486.058 0 # matmult_blk 141
  52734.375    486.338 0 # matmult_blk 141
  71777.344    486.205 0 # matmult_blk 141
- 
+
  36621.094    488.820 0 # matmult_blk 151
  52734.375    492.458 0 # matmult_blk 151
  71777.344    491.137 0 # matmult_blk 151
- 
+
  36621.094    492.503 0 # matmult_blk 161
  52734.375    490.443 0 # matmult_blk 161
  71777.344    488.865 0 # matmult_blk 161
- 
+
  36621.094    493.949 0 # matmult_blk 171
  52734.375    492.637 0 # matmult_blk 171
  71777.344    496.701 0 # matmult_blk 171
- 
+
  36621.094    499.630 0 # matmult_blk 181
  52734.375    500.944 0 # matmult_blk 181
  71777.344    502.669 0 # matmult_blk 181
- 
+
  36621.094    502.472 0 # matmult_blk 191
  52734.375    498.791 0 # matmult_blk 191
  71777.344    495.022 0 # matmult_blk 191
- 
+
  36621.094    504.277 0 # matmult_blk 201
  52734.375    505.054 0 # matmult_blk 201
  71777.344    504.841 0 # matmult_blk 201
- 
+
  36621.094    505.200 0 # matmult_blk 211
  52734.375    505.293 0 # matmult_blk 211
  71777.344    504.879 0 # matmult_blk 211
- 
+
  36621.094    504.669 0 # matmult_blk 221
  52734.375    504.201 0 # matmult_blk 221
  71777.344    502.651 0 # matmult_blk 221
- 
+
  36621.094    500.822 0 # matmult_blk 231
  52734.375    502.417 0 # matmult_blk 231
  71777.344    500.254 0 # matmult_blk 231
- 
+
  36621.094    496.431 0 # matmult_blk 241
  52734.375    495.455 0 # matmult_blk 241
  71777.344    497.992 0 # matmult_blk 241
- 
+
  36621.094    498.796 0 # matmult_blk 251
  52734.375    496.397 0 # matmult_blk 251
  71777.344    496.793 0 # matmult_blk 251
- 
+
  36621.094    496.185 0 # matmult_blk 261
  52734.375    498.307 0 # matmult_blk 261
  71777.344    496.917 0 # matmult_blk 261
- 
+
  36621.094    498.912 0 # matmult_blk 271
  52734.375    504.246 0 # matmult_blk 271
  71777.344    504.062 0 # matmult_blk 271
- 
+
  36621.094    503.191 0 # matmult_blk 281
  52734.375    503.914 0 # matmult_blk 281
  71777.344    505.093 0 # matmult_blk 281
- 
+
  36621.094    501.874 0 # matmult_blk 291
  52734.375    496.633 0 # matmult_blk 291
  71777.344    494.768 0 # matmult_blk 291
- 
+
  36621.094    495.546 0 # matmult_blk 301
  52734.375    495.406 0 # matmult_blk 301
  71777.344    492.100 0 # matmult_blk 301
- 
+
  36621.094    492.622 0 # matmult_blk 311
  52734.375    493.040 0 # matmult_blk 311
  71777.344    493.218 0 # matmult_blk 311
- 
+
  36621.094    492.994 0 # matmult_blk 321
  52734.375    490.902 0 # matmult_blk 321
  71777.344    488.135 0 # matmult_blk 321
- 
+
  36621.094    489.120 0 # matmult_blk 331
  52734.375    487.394 0 # matmult_blk 331
  71777.344    486.552 0 # matmult_blk 331
- 
+
  36621.094    487.568 0 # matmult_blk 341
  52734.375    486.333 0 # matmult_blk 341
  71777.344    486.732 0 # matmult_blk 341
- 
+
  36621.094    487.817 0 # matmult_blk 351
  52734.375    485.982 0 # matmult_blk 351
  71777.344    486.440 0 # matmult_blk 351
- 
-
-------------------------------------------------------------
-Sender: LSF System <lsfadmin@n-62-31-13>
-Subject: Job 1704825: <blk> in cluster <dcc> Done
-
-Job <blk> was submitted from host <n-62-13-2> by user <s182291> in cluster <dcc> at Thu Jan 10 11:46:17 2019
-Job was executed on host(s) <n-62-31-13>, in queue <hpcintro>, as user <s182291> in cluster <dcc> at Thu Jan 10 11:46:19 2019
-</zhome/f5/8/134816> was used as the home directory.
-</zhome/f5/8/134816/Desktop/HPC/w1/02614_assign1_tools_SL7> was used as the working directory.
-Started at Thu Jan 10 11:46:19 2019
-Terminated at Thu Jan 10 12:17:37 2019
-Results reported at Thu Jan 10 12:17:37 2019
-
-Your job looked like:
-
-------------------------------------------------------------
-# LSBATCH: User input
-# BSUB -J blk
-# BSUB -o blk_%J.out
-# BSUB -e blk_%J.err
-# BSUB -q hpcintro
-# BSUB -W 200 -R "rusage[mem=5012MB]"
-
-# run matmult_c for different matrix size
-# for i in `seq 100 100 2000`
-# do
-#     start=`date +%s%3N`
-#     ./matmult_c.gcc knm $i $i $i
-#     end=`date +%s%3N`
-#     runtime=$((end-start))
-#     echo $runtime
-# done
-
-# data with different block size
-for i in `seq 1 10 351`
-do
-    ./matmult_c.gcc blk 1250 1250 1250 $i
-    ./matmult_c.gcc blk 1500 1500 1500 $i
-    ./matmult_c.gcc blk 1750 1750 1750 $i
-    echo " "
-done
-
-------------------------------------------------------------
-
-Successfully completed.
-
-Resource usage summary:
-
-    CPU time :                                   1871.67 sec.
-    Max Memory :                                 108 MB
-    Average Memory :                             92.80 MB
-    Total Requested Memory :                     5012.00 MB
-    Delta Memory :                               4904.00 MB
-    Max Swap :                                   -
-    Max Processes :                              4
-    Max Threads :                                5
-    Run time :                                   1890 sec.
-    Turnaround time :                            1880 sec.
-
-The output (if any) is above this job summary.
-
-
-
-PS:
-
-Read file <blk_1704825.err> for stderr output of this job.
-
