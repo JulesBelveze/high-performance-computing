@@ -13,6 +13,7 @@ int MIN(int a, int b){
 
 void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 {
+    start = clock();
     // m : number of rows of A
     // k : number of cols of A and number of rows of B
     // n : number of cols of B
@@ -30,6 +31,9 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
             }
         }
     }
+    end = clock();
+    cpu_time_used = ((float) (end - start));///
+    printf("%d %f\n",i,cpu_time_used);
 }
 
 void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
