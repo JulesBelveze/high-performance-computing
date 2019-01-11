@@ -2,72 +2,52 @@
 # BSUB -o blk_%J.out
 # BSUB -e blk_%J.err
 # BSUB -q hpcintro
-# BSUB -W 2000000000 -R "rusage[mem=5012MB]"
+# BSUB -W 20000000 -R "rusage[mem=5012MB]"
 
 make clean
 make
 
-# run matmult_c for different matrix size
-# for i in `seq 100 100 2000`
+# folder="permut_opt_"
+# mkdir "permut_opt_"
+# # run matmult_c for different matrix size
+# for i in `seq 36 50 1000`
 # do
-#     echo "knm"
+#     echo $i
 #     for j in `seq 1 1 5`
 #     do
-#         ./matmult_c.gcc knm $i $i $i
+#         ./matmult_c.gcc knm $i $i $i >>${folder}/knm.txt 2>&1
+#         ./matmult_c.gcc kmn $i $i $i >>${folder}/kmn.txt 2>&1
+#         ./matmult_c.gcc mnk $i $i $i >>${folder}/mnk.txt 2>&1
+#         ./matmult_c.gcc mkn $i $i $i >>${folder}/mkn.txt 2>&1
+#         ./matmult_c.gcc nkm $i $i $i >>${folder}/nkm.txt 2>&1
+#         ./matmult_c.gcc nmk $i $i $i >>${folder}/nmk.txt 2>&1
 #     done
-#
-#     echo "kmn"
-#     for j in `seq 1 1 5`
-#     do
-#         ./matmult_c.gcc kmn $i $i $i
-#     done
-#
-#     echo "mnk"
-#     for j in `seq 1 1 5`
-#     do
-#         ./matmult_c.gcc mnk $i $i $i
-#     done
-#
-#     echo "mkn"
-#     for j in `seq 1 1 5`
-#     do
-#         ./matmult_c.gcc mkn $i $i $i
-#     done
-#
-#     echo "nkm"
-#     for j in `seq 1 1 5`
-#     do
-#         ./matmult_c.gcc nkm $i $i $i
-#     done
-#
-#     echo "nmk"
-#     for j in `seq 1 1 5`
-#     do
-#         ./matmult_c.gcc nmk $i $i $i
-#     done
-#
-#     echo "\n $i"
 # done
 
 # data with different block size
-for i in `seq 0 10 350`
+#
+# folder="block"
+# mkdir "block"
+#
+# for i in `seq 0 25 800`
+# do
+#     for j in `seq 1 1 5`
+#     do
+#         ./matmult_c.gcc blk 1000 1000 1000 $i >>${folder}/1000.txt 2>&1
+#         ./matmult_c.gcc blk 1500 1500 1500 $i >>${folder}/1500.txt 2>&1
+#         ./matmult_c.gcc blk 2000 2000 2000 $i >>${folder}/2000.txt 2>&1
+#     done
+# done
+
+# data for a fixed bs (300) and collecting mflops against matrix size
+folder="blk"
+mkdir "blk"
+
+for i in `seq 36 50 2500`
 do
-    echo "mat1"
-    for j in `seq 1 1 5`
+    for j in `seq 1 1 10`
     do
-        ./matmult_c.gcc blk 1250 1250 1250 $i
+        ./matmult_c.gcc blk $i $i $i 300 >>${folder}/block_300.txt 2>&1
+        # ./matmult_c.gcc mkn $i $i $i >>${folder}/mnk_no_block.txt 2>&1
     done
-
-    echo "mat2"
-    for j in `seq 1 1 5`
-    do
-        ./matmult_c.gcc blk 1500 1500 1500 $i
-    done
-
-    echo "mat3"
-    for j in `seq 1 1 5`
-    do
-        ./matmult_c.gcc blk 1750 1750 1750 $i
-    done
-    echo "\n $i"
 done
