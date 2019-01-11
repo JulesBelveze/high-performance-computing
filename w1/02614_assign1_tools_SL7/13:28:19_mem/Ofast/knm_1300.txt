@@ -1,0 +1,20 @@
+ 39609.375   1272.293 0 # matmult_knm
+ 39609.375   1232.147 0 # matmult_knm
+ 39609.375   1253.036 0 # matmult_knm
+ 39609.375   1282.334 0 # matmult_knm
+ 39609.375   1300.520 0 # matmult_knm
+
+ Performance counter stats for './matmult_c.gcc knm 1300 1300 1300' (5 runs):
+
+         285360030      cache-references:u        #   74.432 M/sec                    ( +-  0.12% )
+           2380416      cache-misses:u            #    0.834 % of all cache refs      ( +- 22.29% )
+       13617466884      cycles:u                  #    3.552 GHz                      ( +-  1.05% )
+       3833.841572      task-clock:u (msec)       #    0.993 CPUs utilized            ( +-  0.82% )
+       25462355914      instructions:u            #    1.87  insn per cycle           ( +-  0.00% )
+        2216375685      branches:u                #  578.108 M/sec                    ( +-  0.00% )
+           1831746      branch-misses:u           #    0.08% of all branches          ( +-  0.06% )
+              5214      faults:u                  #    0.001 M/sec                    ( +-  5.75% )
+                 0      migrations:u              #    0.000 K/sec                  
+
+       3.862169972 seconds time elapsed                                          ( +-  0.82% )
+

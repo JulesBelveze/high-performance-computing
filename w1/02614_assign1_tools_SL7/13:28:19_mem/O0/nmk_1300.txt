@@ -1,0 +1,20 @@
+ 39609.375    459.865 0 # matmult_nmk
+ 39609.375    453.146 0 # matmult_nmk
+ 39609.375    462.484 0 # matmult_nmk
+ 39609.375    460.635 0 # matmult_nmk
+ 39609.375    451.317 0 # matmult_nmk
+
+ Performance counter stats for './matmult_c.gcc nmk 1300 1300 1300' (5 runs):
+
+         292848974      cache-references:u        #   29.362 M/sec                    ( +-  0.02% )
+           7342425      cache-misses:u            #    2.507 % of all cache refs      ( +- 16.24% )
+       36268378385      cycles:u                  #    3.636 GHz                      ( +-  0.44% )
+       9973.680105      task-clock:u (msec)       #    0.995 CPUs utilized            ( +-  0.46% )
+      113367908132      instructions:u            #    3.13  insn per cycle           ( +-  0.00% )
+        2219551934      branches:u                #  222.541 M/sec                    ( +-  0.00% )
+           1830692      branch-misses:u           #    0.08% of all branches          ( +-  0.03% )
+              8047      faults:u                  #    0.807 K/sec                    ( +-  3.93% )
+                 0      migrations:u              #    0.000 K/sec                  
+
+      10.020521480 seconds time elapsed                                          ( +-  0.45% )
+
