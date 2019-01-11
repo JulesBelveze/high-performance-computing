@@ -20,11 +20,9 @@ for c in "${COMPILER_OPTIONS[@]}"; do
 	mkdir ${timestamp}/${c}
 		for f in "${FUNCTIONS[@]}"; do
 			mkdir ${timestamp}/${c}/${f}
-			for i in `seq 1 80 2000`;do
-      	for j in `seq 1 1 5`;do
-				  perf stat -B ./matmult_c.gcc ${f} $i $i $i >>${timestamp}/${c}/${f}/${i}_${j}.txt 2>&1
-        done
-			done
+		#	for i in `seq 1 280 2000`;do
+				   perf stat -B -e cache-references,cache-misses,cycles,task-clock,instructions,branches,branch-misses,faults,migrations -r 5 ./matmult_c.gcc ${f} 1300 1300 1300  >>${timestamp}/${c}/${f}_1300.txt 2>&1
+		#	done
 	done
 done
 echo "DONE"
