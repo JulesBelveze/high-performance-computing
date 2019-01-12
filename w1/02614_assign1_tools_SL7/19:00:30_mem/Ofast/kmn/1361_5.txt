@@ -1,0 +1,15 @@
+ 43413.773   3682.755 0 # matmult_kmn
+
+ Performance counter stats for './matmult_c.gcc kmn 1361 1361 1361':
+
+       4518.957354      task-clock:u (msec)       #    0.994 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+              6843      page-faults:u             #    0.002 M/sec                  
+       15802578636      cycles:u                  #    3.497 GHz                    
+       57133951330      instructions:u            #    3.62  insn per cycle         
+        3832869172      branches:u                #  848.176 M/sec                  
+           5765608      branch-misses:u           #    0.15% of all branches        
+
+       4.546473751 seconds time elapsed
+
