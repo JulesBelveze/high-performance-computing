@@ -5,7 +5,7 @@ TARGET	= madd.$(CC)
 CC	= gcc
 INCS	=
 DBG	= -g
-OPT	= -O3
+OPT	= -Ofast
 PARA	=
 CFLAGS	= $(DBG) $(OPT) $(PARA) $(XOPTS)
 
