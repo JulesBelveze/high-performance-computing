@@ -4,9 +4,10 @@
 
 void generate_matrix(int row, int col, int Matrix[row][col])
 {
-  for(int i = 0; i < row; i++)
+  int i,j;
+  for(i = 0; i < row; i++)
   {
-    for(int j = 0; j < col; j++)
+    for(j = 0; j < col; j++)
     {
         Matrix[i][j] = rand()%10;
         //Matrix[i][j] = rand();
@@ -16,7 +17,8 @@ void generate_matrix(int row, int col, int Matrix[row][col])
 
 void generate_vector(int col, int outvector[col])
 {
-  for(int i = 0; i < col; i++)
+  int i;
+  for(i = 0; i < col; i++)
   {
     outvector[i] = rand() % 10;
     // outvector[i] = rand();
@@ -25,7 +27,8 @@ void generate_vector(int col, int outvector[col])
 
 void print_vector(int col, int invector[col])
 {
-  for(int j = 0; j < col; j++)
+  int j;
+  for(j = 0; j < col; j++)
   {
       printf("%d ", invector[j]);
   }
@@ -34,9 +37,10 @@ void print_vector(int col, int invector[col])
 
 void print_matrix(int row, int col, int Matrix[row][col])
 {
-  for(int i = 0; i < row; i++)
+  int i,j;
+  for(i = 0; i < row; i++)
   {
-    for(int j = 0; j < col; j++)
+    for(j = 0; j < col; j++)
     {
         printf("%d ", Matrix[i][j]);
     }
@@ -67,10 +71,11 @@ int main()
   print_matrix(row,col,mA);
 
   printf("multiplying:\n");
-  for(int i = 0; i < col; i++)
+  int i, j;
+  for(i = 0; i < col; i++)
   {
     vC[i] = 0;
-    for(int j = 0; j < row; j++)
+    for(j = 0; j < row; j++)
     {
       // printf("----- %d * %d = %d\n",mA[i][j],vB[j],mA[i][j]*vB[j]);
       vC[i] += mA[i][j]*vB[j];
