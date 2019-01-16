@@ -10,31 +10,26 @@
 
 #include "datatools.h"
 
-void init_data(int N, double **u_new, double **u_old, double **f)
+void init_data(int N, double **u, double **f)
 {
 
     int i, j;
     double x, y;
     double h = 2.0 / (N + 1);
 
-    for (i = 0; i <= N + 1; i++)
-    {
-        u_new[i][0] = 20.0;
-        u_new[0][i] = 20.0;
-        u_new[i][N + 1] = 20.0;
-        u_new[N + 1][i] = 0.0;
-        u_old[i][0] = 20.0;
-        u_old[0][i] = 20.0;
-        u_old[i][N + 1] = 20.0;
-        u_old[N + 1][i] = 0.0;
-    }
     for (i = 1; i <= N; i++)
     {
         for (j = 1; j <= N; j++)
         {
-            u_new[i][j] = 0.0;
-            u_old[i][j] = 0.0;
+            u[i][j] = 1.0;
         }
+    }
+    for (i = 0; i <= N + 1; i++)
+    {
+        u[i][0] = 20.0;
+        u[0][i] = 20.0;
+        u[i][N + 1] = 20.0;
+        u[N + 1][i] = 0.0;
     }
 
     for (i = 0; i <= N + 1; i++)
