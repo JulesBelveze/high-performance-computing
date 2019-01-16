@@ -36,15 +36,13 @@ void init_data(int N, double **u, double **f)
     {
         for (j = 0; j <= N + 1; j++)
         {
+            f[i][j] = 0.0;
             x = -1 + j * h;
             y = 1 - i * h;
+            // 0≤x≤1/3, −2/3≤y≤−1/3
             if (x >= 0 && x <= 1.0 / 3 && y >= -2.0 / 3 && y <= -1.0 / 3)
             {
                 f[i][j] = 200.0;
-            }
-            else
-            {
-                f[i][j] = 0.0;
             }
         }
     }
