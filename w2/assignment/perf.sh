@@ -11,7 +11,7 @@ timestamp=`date +"%T"`
 ls
 mkdir "results/${timestamp}"
 for n in `seq 1 1 10`; do
-	mkdir ${timestamp}/${c}
+	mkdir "${timestamp}/${c}"
 	echo ${f} $n
 done
 echo "DONE"
