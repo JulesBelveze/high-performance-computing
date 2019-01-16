@@ -18,18 +18,23 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 	{
 		dist = 0.0;
 		norm = 0.0;
-		**u_old = **u;
+
+		for(i=0; i <= N+1; i++){
+			for(j=0; j<= N+1; j++){
+				u_old[i][j] = u[i][j];
+			}
+		}
+
 		for (i = 1; i <= N; i++)
 		{
 			for (j = 1; j <= N; j++)
 			{
 				u[i][j] = 0.25 * (u_old[i - 1][j] + u_old[i + 1][j] + u_old[i][j - 1] + u_old[i][j + 1] + delta_square * f[i][j]);
-
 				dist += (u[i][j] - u_old[i][j]) * (u[i][j] - u_old[i][j]);
 				norm += u[i][j] * u[i][j];
 			}
 		}
-		dist = dist / norm;
+		dist = (double) dist / norm;
 
 		k += 1;
 	}

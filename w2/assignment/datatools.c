@@ -21,7 +21,7 @@ void init_data(int N, double **u, double **f)
     {
         for (j = 1; j <= N; j++)
         {
-            u[i][j] = 1.0;
+            u[i][j] = 2.0;
         }
     }
     for (i = 0; i <= N + 1; i++)
