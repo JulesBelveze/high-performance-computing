@@ -2,14 +2,15 @@ SRCS	= main.c datatools.c jacobi.c gauss.c
 OBJS	= $(SRCS:.c=.o)
 TARGET	= jacob_gauss.$(CC)
 
-CC	= suncc
-INCS	= 
+CC	=  gcc#suncc
+INCS	=
 DBG	= -g
-OPT	= -O3 -fast -xrestrict
-PARA	= -xopenmp
+# OPT	= -O3 -fast -xrestrict
+# PARA	= -xopenmp
+OPT	= -Ofast
 CFLAGS	= $(DBG) $(OPT) $(PARA) $(XOPTS)
 
-LIBS	= 
+LIBS	=
 
 all: $(TARGET)
 
