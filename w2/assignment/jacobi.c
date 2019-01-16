@@ -39,5 +39,5 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 		k += 1;
 	}
 	free_2d(u_old);
-	printf("Iterations: %d\n distance: %.8f\n", k, dist);
+	printf("Iterations: %d\nDistance: %.8f\n", k, dist);
 }

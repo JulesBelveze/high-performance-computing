@@ -7,6 +7,18 @@
 #include "jacobi.h"
 #include "gauss.h"
 
+void print_matrix(int n, double **Matrix)
+{
+	for (int j = 0; j < n; j++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			printf("%.2lf ", Matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	int N, num_iterations, poisson;
@@ -44,7 +56,7 @@ int main(int argc, char *argv[])
 	else
 	{
 		poisson = 0;
-		N = 100;
+		N = 10;
 		num_iterations = 10000;
 		threshold = 1e-10;
 	}
@@ -58,6 +70,11 @@ int main(int argc, char *argv[])
 	}
 
 	init_data(N, u, f);
+	printf("f:\n");
+	print_matrix(N + 2, f);
+	printf("u:\n");
+	print_matrix(N + 2, u);
+
 	if (poisson == 0)
 	{
 		jacobi(N, num_iterations, f, u, threshold);
@@ -66,7 +83,7 @@ int main(int argc, char *argv[])
 	{
 		gauss(N, num_iterations, f, u, threshold);
 	}
-	// free_2d(u);
-	// free_2d(f);
+	free_2d(u);
+	free_2d(f);
 	return 0;
 }

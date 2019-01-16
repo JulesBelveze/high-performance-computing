@@ -12,7 +12,6 @@
 
 void init_data(int N, double **u, double **f)
 {
-
     int i, j;
     double x, y;
     double h = 2.0 / (N + 1);
@@ -31,7 +30,6 @@ void init_data(int N, double **u, double **f)
         u[i][N + 1] = 20.0;
         u[N + 1][i] = 0.0;
     }
-
     for (i = 0; i <= N + 1; i++)
     {
         for (j = 0; j <= N + 1; j++)
