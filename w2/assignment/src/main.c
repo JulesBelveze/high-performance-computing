@@ -21,30 +21,26 @@ void print_matrix(int n, double **Matrix)
 
 int main(int argc, char *argv[])
 {
-	int N, num_iterations, poisson;
-	double threshold;
+	int N = 100;
+	int poisson = 0;
+	double threshold = 1e-10;
 	double **u, **f;
+	int num_iterations = 10000;
 
 	if (argc == 2)
 	{
 		poisson = atoi(argv[1]);
-		N = 100;
-		num_iterations = 10000;
-		threshold = 1e-10;
 	}
 	else if (argc == 3)
 	{
 		poisson = atoi(argv[1]);
 		N = atoi(argv[2]);
-		num_iterations = 10000;
-		threshold = 1e-10;
 	}
 	else if (argc == 4)
 	{
 		poisson = atoi(argv[1]);
 		N = atoi(argv[2]);
 		num_iterations = atoi(argv[3]);
-		threshold = 1e-10;
 	}
 	else if (argc == 5)
 	{
@@ -52,13 +48,6 @@ int main(int argc, char *argv[])
 		N = atoi(argv[2]);
 		num_iterations = atoi(argv[3]);
 		threshold = atoi(argv[4]);
-	}
-	else
-	{
-		poisson = 0;
-		N = 10;
-		num_iterations = 10000;
-		threshold = 1e-10;
 	}
 
 	u = malloc_2d(N + 2, N + 2);
