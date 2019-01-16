@@ -1,24 +1,22 @@
-SRCS	= main.c datatools.c jacobi.c gauss.c
-OBJS	= $(SRCS:.c=.o)
-TARGET	= jacob_gauss.$(CC)
+CC		  := gcc
+C_FLAGS := -Wall -Wextra -g -Ofast
+EXECUTABLE	:= jacob_gauss.$(CC)
 
-CC	=  gcc#suncc
-INCS	=
-DBG	= -g
-# OPT	= -O3 -fast -xrestrict
-# PARA	= -xopenmp
-OPT	= -Ofast
-CFLAGS	= $(DBG) $(OPT) $(PARA) $(XOPTS)
+BIN  := bin
+SRC  := src
+INCLUDE := include
+LIB  := lib
 
-LIBS	=
+LIBRARIES	:=
 
-all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
+all: $(BIN)/$(EXECUTABLE)
+
+run: clean all
+	./$(BIN)/$(EXECUTABLE)
+
+$(BIN)/$(EXECUTABLE): $(SRC)/*.c
+	$(CC) $(C_FLAGS) -I$(INCLUDE) -L$(LIB) $^  -o $@ $(LIBRARIES)
 
 clean:
-	@/bin/rm -f $(OBJS) *~ core*
-
-realclean: clean
-	@/bin/rm -f $(TARGET)
+	-rm $(BIN)/*
