@@ -34,7 +34,7 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 				norm += u[i][j] * u[i][j];
 			}
 		}
-		dist = double sqrt(double dist) ;
+		dist = (double) sqrt((double) dist) ;
 
 		k += 1;
 	}
