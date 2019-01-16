@@ -59,17 +59,19 @@ int main(int argc, char *argv[])
 	}
 
 	init_data(N, u, f);
-	printf("f:\n");
-	print_matrix(N + 2, f);
-	printf("u:\n");
-	print_matrix(N + 2, u);
+	// printf("f:\n");
+	// print_matrix(N + 2, f);
+	// printf("u:\n");
+	// print_matrix(N + 2, u);
 
 	if (poisson == 0)
 	{
+		printf("Jacobi method \n");
 		jacobi(N, num_iterations, f, u, threshold);
 	}
 	else
 	{
+		printf("Gausss method \n");
 		gauss(N, num_iterations, f, u, threshold);
 	}
 	free_2d(u);
