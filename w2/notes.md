@@ -1,14 +1,16 @@
-## Sync to remote mount
->Note: Needs testing
+## Remote sync to SSH machine
 ```bash
-open 'smb://home.cc.dtu.dk/s144222'
-# try
-# man mount_smbfs
-# do all the ui ish
-
-rsync --progress -rt --delete Documents/DTU/Semester\ 10/02614\ -\ High\ Performance\ Computing/HPC /Volumes/s144222/Documents/
+rsync -avz --delete -e ssh ~/Documents/DTU/Semester\ 10/02614\ -\ High\ Performance\ Computing/HPC/ HPCintro://zhome/ff/a/97945/Documents/HPC
 ```
 
+## SSH Remote run
+```bash
+# run bash script remotely
+cat commands-to-execute-remotely.sh | ssh blah_server
+
+# run single line remotely
+ssh $HOST ls; pwd; cat /path/to/remote/file
+```
 
 ## Makefile with multithreading and time check
 
