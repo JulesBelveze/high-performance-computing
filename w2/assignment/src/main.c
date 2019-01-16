@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-// #include <omp.h>
+
+#include "jacobi_parallel.h"
+#include "jacobi_parallel_naive.h"
 
 #include "datatools.h"
 #include "jacobi.h"
@@ -54,7 +56,7 @@ int main(int argc, char *argv[])
 	f = malloc_2d(N + 2, N + 2);
 	if (u == NULL || f == NULL)
 	{
-		printf(stderr, "Memory allocation error...\n");
+		printf("Memory allocation error...\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -68,6 +70,14 @@ int main(int argc, char *argv[])
 	{
 		printf("Jacobi method \n");
 		jacobi(N, num_iterations, f, u, threshold);
+	}
+	else if (poisson == 2)
+	{
+		jacobi_parallel_naive(N, num_iterations, f, u, threshold);
+	}
+	else if (poisson == 3)
+	{
+		jacobi_parallel(N, num_iterations, f, u, threshold);
 	}
 	else
 	{

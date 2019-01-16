@@ -12,7 +12,7 @@ void gauss(int N, int num_iterations, double **f, double **u_new, double thresho
 	// threshold *= (N + 1) * (N + 1);
 	//grid spacing: 2/(N+1) (x goes from -1 to 1)
 	double delta = (2 / (N + 1)) * (2 / (N + 1));
-	
+
 	while (dist > threshold && k < num_iterations)
 	{
 		dist = 0.0;
