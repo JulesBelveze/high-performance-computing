@@ -1,16 +1,18 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+
 void gauss(int N, int num_iterations, double **f, double **u_new, double threshold)
 {
 
 	int i, j;
 	int k = 0;
 	double dist = 100000000000.0;
-	double norm;
 	double u_old;
 	// threshold *= (N + 1) * (N + 1);
 	//grid spacing: 2/(N+1) (x goes from -1 to 1)
 	double delta = (2 / (N + 1)) * (2 / (N + 1));
+	
 	while (dist > threshold && k < num_iterations)
 	{
 		dist = 0.0;
@@ -23,7 +25,7 @@ void gauss(int N, int num_iterations, double **f, double **u_new, double thresho
 				dist += (u_new[i][j] - u_old) * (u_new[i][j] - u_old);
 			}
 		}
-		dist = (double) sqrt((double) dist);
+		dist = (double)sqrt((double)dist);
 		k += 1;
 	}
 

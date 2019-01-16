@@ -27,9 +27,8 @@
 void jacobi_test(const int n, const int m, double dx, double dy, double alpha,
                  double omega, double *u, double *f, double tol, int maxit)
 {
-    int i, j, k, k_local;
-    double error, resid, rsum, ax, ay, b;
-    double error_local;
+    int i, j, k;
+    double error, resid, ax, ay, b;
     double *uold;
 
     uold = (double *)malloc(sizeof(double) * n * m);

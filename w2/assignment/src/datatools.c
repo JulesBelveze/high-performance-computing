@@ -55,7 +55,6 @@ int check_results(char *comment, int m, int n, double **A)
     int i, errors = 0;
     char *marker;
     double TOL = 100.0 * DBL_EPSILON;
-    double SMALL = 100.0 * DBL_MIN;
 
     if ((marker = (char *)malloc(m * n * sizeof(char))) == NULL)
     {
