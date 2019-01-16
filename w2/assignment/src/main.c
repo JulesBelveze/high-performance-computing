@@ -52,17 +52,13 @@ int main(int argc, char *argv[])
 
 	u = malloc_2d(N + 2, N + 2);
 	f = malloc_2d(N + 2, N + 2);
-	if (u == NULL | f == NULL)
+	if (u == NULL || f == NULL)
 	{
 		printf(stderr, "Memory allocation error...\n");
 		exit(EXIT_FAILURE);
 	}
 
 	init_data(N, u, f);
-	printf("f:\n");
-	print_matrix(N + 2, f);
-	printf("u:\n");
-	print_matrix(N + 2, u);
 
 	if (poisson == 0)
 	{
