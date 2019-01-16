@@ -34,10 +34,10 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 				norm += u[i][j] * u[i][j];
 			}
 		}
-		dist = (double) dist / norm;
+		dist = double sqrt(double dist) ;
 
 		k += 1;
 	}
 	free_2d(u_old);
-	printf("Iterations: %d\nDistance: %.8f\n", k, dist);
+	printf("Iterations: %d\nDistance: %.18f\n", k, dist);
 }
