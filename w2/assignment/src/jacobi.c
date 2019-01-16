@@ -9,7 +9,7 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 	int i, j;
 	int k = 0;
 	double dist = 100000000000.0;
-	double norm;
+	// double norm;
 	double **u_old = malloc_2d(N + 2, N + 2);
 
 	//grid spacing: 2/(N+1) (x goes from -1 to 1)
@@ -17,7 +17,7 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 	while (dist > threshold && k < num_iterations)
 	{
 		dist = 0.0;
-		norm = 0.0;
+		// norm = 0.0;
 
 		for(i=0; i <= N+1; i++){
 			for(j=0; j<= N+1; j++){
@@ -31,7 +31,7 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 			{
 				u[i][j] = 0.25 * (u_old[i - 1][j] + u_old[i + 1][j] + u_old[i][j - 1] + u_old[i][j + 1] + delta_square * f[i][j]);
 				dist += (u[i][j] - u_old[i][j]) * (u[i][j] - u_old[i][j]);
-				norm += u[i][j] * u[i][j];
+				// norm += u[i][j] * u[i][j];
 			}
 		}
 		dist = (double) sqrt((double) dist) ;
