@@ -1,0 +1,6 @@
+/*** README ***/
+
+The current directory contains 3 folders:
+- bash_scripts ==> batch scripts written in Unix bash (command line) used to submit jobs to the LSF10 clusters
+- src          ==> all the source code (compiled objects and executable file not included!)
+- output       ==> all the needed outputs from the batch jobs, used to generate the plots

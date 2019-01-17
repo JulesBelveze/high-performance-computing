@@ -1,0 +1,9 @@
+/*** README ***/
+
+Please find more specific script instructions in the header lines of each .sh file.
+Depending on the results you're interested in, the source .c files should be edited such that only the needed info are printed.
+
+In general:
+- run_gauss.sh  ==> launches the executable with the Gauss-Seidel iteration type, eiter with fixed or dynamic matrix size
+- run_jacobi.sh ==> launches the executable with the Jacobi iteration type, eiter with fixed or dynamic matrix size
+- speed_up.sh   ==> launches the executable with parallelized version with variable number of threads 

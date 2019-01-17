@@ -1,0 +1,13 @@
+/*** README ***/
+
+The different versions of Jacobi contain the different tuning iterations performed while working on the parallelized version. The main jacobi.c file contains the version that will be compiled!
+Change its content accordingly, eventually.
+
+Instructions about how to launch the executable:
+1) make
+2) poisson {type} {N} {k} {d}
+where:
+- type: gauss / jacobi
+- N: number of INNER grid points (excluding boundaries)
+- k: max number of iterations
+- d: threshold
