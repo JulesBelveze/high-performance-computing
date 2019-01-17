@@ -8,6 +8,7 @@
 *.elf
 
 *.gcc
+*.gcc-8
 # Linker output
 *.ilk
 *.map
