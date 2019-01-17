@@ -54,5 +54,5 @@ void jacobi_parallel_1(int N, int num_iterations, double **f, double **u, double
 		}
 	}
 	// free_2d(u_old);
-	printf("Iterations: %d\nDistance: %.18f\n", k, dist);
+	// printf("Iterations: %d\nDistance: %.18f\n", k, dist);
 }
