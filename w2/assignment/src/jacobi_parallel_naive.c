@@ -17,7 +17,7 @@ void jacobi_parallel_naive(int N, int num_iterations, double **f, double **u, do
 	{
 		dist = 0.0;
 
-#pragma omp parallel for private(i, j)
+#pragma omp parallel for private(i, j, u_old)
 		for (i = 0; i <= N + 1; i++)
 		{
 			for (j = 0; j <= N + 1; j++)
@@ -26,6 +26,8 @@ void jacobi_parallel_naive(int N, int num_iterations, double **f, double **u, do
 			}
 		}
 
+#pragma omp parallel for private(i, j) reduction(+ \
+																								 : dist)
 		for (i = 1; i <= N; i++)
 		{
 			for (j = 1; j <= N; j++)
