@@ -6,13 +6,20 @@
 #BSUB -W 2000000 -R "rusage[mem=512MB]"
 #BSUB -n 1
 
+N=(2 4 8 16 32 64 128 256 512 1024 2048)
+
+# rm -r "results/"
 echo "Starting Jobs"
 timestamp=`date +"%T"`
 ls
+# make clean
+# make
 mkdir "results/${timestamp}"
-for n in `seq 1 1 10`; do
-	mkdir "${timestamp}/${c}"
-	echo ${f} $n
+# for n in `seq 2 100 1000`; do
+	for n in "${N[@]}"; do
+		touch "results/${timestamp}/${n}.txt"
+		./bin/jacob_gauss.gcc poisson $n 10000 0.00001 >> "results/${timestamp}/${n}.txt"
+		echo $n
 done
 echo "DONE"
 
