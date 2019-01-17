@@ -29,5 +29,5 @@ void gauss(int N, int num_iterations, double **f, double **u_new, double thresho
 		k += 1;
 	}
 
-	printf("Iterations: %d\ndistance: %.18f\n", k, dist);
+	// printf("Iterations: %d\ndistance: %.18f\n", k, dist);
 }
