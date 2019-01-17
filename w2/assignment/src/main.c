@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "jacobi_parallel.h"
+#include "jacobi_parallel_v1.h"
 #include "jacobi_parallel_naive.h"
+#include "jacobi_parallel_v2.h"
 
 #include "datatools.h"
 #include "jacobi.h"
@@ -23,7 +24,7 @@ void print_matrix(int n, double **Matrix)
 
 int main(int argc, char *argv[])
 {
-	int N = 100;
+	int N = 400;
 	int poisson = 0;
 	double threshold = 1e-10;
 	double **u, **f;
@@ -70,29 +71,35 @@ int main(int argc, char *argv[])
 
 	if (poisson == 0)
 	{
-		printf("Jacobi\n");
-		printf("N: %d\n", N);
+		// printf("Jacobi\n");
+		// printf("N: %d\n", N);
 		jacobi(N, num_iterations, f, u, threshold);
 	}
 	else if (poisson == 2)
 	{
-		printf("Jacobi parallel naive\n");
-		printf("N: %d\n", N);
+		// printf("Jacobi parallel naive\n");
+		// printf("N: %d\n", N);
 		jacobi_parallel_naive(N, num_iterations, f, u, threshold);
 	}
 	else if (poisson == 3)
 	{
-		printf("Jacobi parallel\n");
-		printf("N: %d\n", N);
-		jacobi_parallel(N, num_iterations, f, u, threshold);
+		// printf("Jacobi parallel\n");
+		// printf("N: %d\n", N);
+		jacobi_parallel_1(N, num_iterations, f, u, threshold);
+	}
+	else if (poisson == 4)
+	{
+		// printf("Jacobi parallel\n");
+		// printf("N: %d\n", N);
+		jacobi_parallel_2(N, num_iterations, f, u, threshold);
 	}
 	else
 	{
-		printf("Gausss method \n");
-		printf("N: %d\n", N);
+		// printf("Gausss method \n");
+		// printf("N: %d\n", N);
 		gauss(N, num_iterations, f, u, threshold);
 	}
-	print_matrix(N+2,u);
+	// print_matrix(N + 2, u);
 	free_2d(u);
 	free_2d(f);
 	return 0;
