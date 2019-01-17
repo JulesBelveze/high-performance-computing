@@ -19,7 +19,7 @@ mkdir "results/${timestamp}"
 # for n in `seq 2 100 1000`; do
 	for n in "${N[@]}"; do
 		touch "results/${timestamp}/${n}.txt"
-		./bin/jacob_gauss.gcc 0 $n 1000 0.0001 >> "results/${timestamp}/${n}.txt"
+		./bin/jacob_gauss.gcc-8 0 $n 1000 0.0001 >> "results/${timestamp}/${n}.txt"
 		echo $n
 done
 echo "DONE"

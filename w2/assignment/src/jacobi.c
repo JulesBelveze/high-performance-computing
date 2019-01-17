@@ -22,8 +22,9 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 		}
 	}
 
-	//grid spacing: 2/(N+1) (x goes from -1 to 1)
 	double **temp = NULL;
+
+	//grid spacing: 2/(N+1) (x goes from -1 to 1)
 	while (dist > threshold && k < num_iterations)
 	{
 		dist = 0.0;
@@ -36,8 +37,13 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 				dist += (u[i][j] - u_old[i][j]) * (u[i][j] - u_old[i][j]);
 			}
 		}
+		// memory address movearound thing idea...
+		temp = u;
+		u = u_old;
+		u_old = temp;
+
 		k += 1;
 	}
-	free_2d(u_old);
+	// free_2d(u_old);
 	printf("Iterations: %d\nDistance: %.18f\n", k, dist);
 }
