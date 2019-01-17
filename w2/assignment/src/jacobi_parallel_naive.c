@@ -3,23 +3,24 @@
 #include "datatools.h"
 #include <stdlib.h>
 
-void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
+void jacobi_parallel_naive(int N, int num_iterations, double **f, double **u, double threshold)
 {
 
 	int i, j;
 	int k = 0;
 	double dist = 100000000000.0;
 	double **u_old = malloc_2d(N + 2, N + 2);
-	double delta_square = (2.0 / (N + 1)) * (2.0 / (N + 1));
 
 	//grid spacing: 2/(N+1) (x goes from -1 to 1)
+	double delta_square = 2.0 / (N + 1) * 2.0 / (N + 1);
 	while (dist > threshold && k < num_iterations)
 	{
 		dist = 0.0;
 
-		for (i = 0; i <= N; i++)
+#pragma omp parallel for private(i, j)
+		for (i = 0; i <= N + 1; i++)
 		{
-			for (j = 0; j <= N; j++)
+			for (j = 0; j <= N + 1; j++)
 			{
 				u_old[i][j] = u[i][j];
 			}
@@ -34,8 +35,9 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 			}
 		}
 		dist = (double)sqrt((double)dist);
+
 		k += 1;
 	}
 	free_2d(u_old);
-	printf("Iterations: %d\nDistance: %.18f\n", k, dist);
+	// printf("Iterations: %d\nDistance: %.18f\n", k, dist);
 }
