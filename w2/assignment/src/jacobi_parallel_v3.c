@@ -3,7 +3,7 @@
 #include "datatools.h"
 #include <stdlib.h>
 
-void calculation(int N, int num_iterations, double **f, double **u, double threshold)
+void calc(int N, int num_iterations, double **f, double **u, double threshold)
 {
 	int i, j;
 	int k = 0;
@@ -27,10 +27,12 @@ void calculation(int N, int num_iterations, double **f, double **u, double thres
 	while (dist > threshold && k < num_iterations)
 	{
 		dist = 0.0;
+		double tmp_dist = 0.0;
+		// reduction(+
+		// : dist) // schedule(dynamic)
 #pragma omp for private(i, j)
 		for (i = 1; i <= N; i++)
 		{
-			double tmp_dist = 0.0;
 			for (j = 1; j <= N; j++)
 			{
 				u[i][j] = 0.25 * (u_old[i - 1][j] + u_old[i + 1][j] + u_old[i][j - 1] + u_old[i][j + 1] + delta_square * f[i][j]);
@@ -47,13 +49,13 @@ void calculation(int N, int num_iterations, double **f, double **u, double thres
 	}
 }
 
-void jacobi_parallel_2(int N, int num_iterations, double **f, double **u, double threshold)
+void jacobi_parallel_3(int N, int num_iterations, double **f, double **u, double threshold)
 {
 	threshold *= threshold;
 
 #pragma omp parallel
 	{
-		calculation(N, num_iterations, f, u, threshold);
+		calc(N, num_iterations, f, u, threshold);
 	}
 	// free_2d(u_old);
 	// printf("Iterations: %d\nDistance: %.18f\n", k, dist);
