@@ -12,9 +12,9 @@ main(int argc, char *argv[]) {
     int	  max_iter;
     int   *image;
 
-    width    = 2601;
-    height   = 2601;
-    max_iter = 400;
+    width    = 1000;
+    height   = 1000;
+    max_iter = 10000;
 
     // command line argument sets the dimensions of the image
     if ( argc == 2 ) width = height = atoi(argv[1]);
@@ -26,7 +26,7 @@ main(int argc, char *argv[]) {
     }
     #pragma omp parallel
     mandel(width, height, image, max_iter);
-    
+
     //writepng("mandelbrot.png", image, width, height);
 
     return(0);

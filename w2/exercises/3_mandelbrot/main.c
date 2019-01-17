@@ -10,9 +10,9 @@ main(int argc, char *argv[]) {
     int	  max_iter;
     int   *image;
 
-    width    = 2000;
-    height   = 2000;
-    max_iter = 600;
+    width    = 100;
+    height   = 100;
+    max_iter = 100;
 
     // command line argument sets the dimensions of the image
     if ( argc == 2 ) width = height = atoi(argv[1]);
@@ -25,7 +25,7 @@ main(int argc, char *argv[]) {
 
     mandel(width, height, image, max_iter);
 
-    writepng("mandelbrot.png", image, width, height);
+    // writepng("mandelbrot.png", image, width, height);
 
     return(0);
 }

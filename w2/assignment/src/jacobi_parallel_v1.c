@@ -27,9 +27,9 @@ void jacobi_parallel_1(int N, int num_iterations, double **f, double **u, double
 	double delta_square = 2.0 / (N + 1) * 2.0 / (N + 1);
 #pragma omp parallel
 	{
-		for (int k = 0; k < num_iterations; k++)
+		for (k = 0; k < num_iterations; k++)
 		{
-			if (dist > threshold)
+			if (dist < threshold)
 			{
 				break;
 			}

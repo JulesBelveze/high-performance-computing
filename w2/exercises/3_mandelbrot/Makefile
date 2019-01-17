@@ -1,9 +1,9 @@
 TARGET	= mandelbrot
-OBJS	= main.o mandel.o writepng.o 
+OBJS	= main.o mandel.o writepng.o
 
-OPT	= -g -fast
-ISA	= 
-PARA	= 
+OPT	= -gcc -fast -xopenmp
+ISA	=
+PARA	=
 
 PNGWRITERPATH = pngwriter
 ARCH	      = $(shell uname -p)
@@ -19,12 +19,12 @@ CFLAGS	= $(OPT) $(ISA) $(PARA) $(XOPT)
 
 F90C  	= f90
 
-LIBS	= -L $(PNGWRTLPATH) -lpngwriter -lpng 
+LIBS	= -L $(PNGWRTLPATH) -lpngwriter -lpng
 
 
 all: $(PNGWRITERLIB) $(TARGET)
 
-$(TARGET): $(OBJS) 
+$(TARGET): $(OBJS)
 	$(CCC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
 
 $(PNGWRITERLIB):
