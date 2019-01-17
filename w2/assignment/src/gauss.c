@@ -9,7 +9,8 @@ void gauss(int N, int num_iterations, double **f, double **u_new, double thresho
 	int k = 0;
 	double dist = 100000000000.0;
 	double u_old;
-	// threshold *= (N + 1) * (N + 1);
+	threshold *= threshold;
+
 	//grid spacing: 2/(N+1) (x goes from -1 to 1)
 	double delta = (2 / (N + 1)) * (2 / (N + 1));
 
@@ -25,7 +26,6 @@ void gauss(int N, int num_iterations, double **f, double **u_new, double thresho
 				dist += (u_new[i][j] - u_old) * (u_new[i][j] - u_old);
 			}
 		}
-		dist = (double)sqrt((double)dist);
 		k += 1;
 	}
 
