@@ -17,9 +17,10 @@
 
 void print_matrix(int n, double **Matrix)
 {
-	for (int j = 0; j < n; j++)
+	int j, i;
+	for (j = 0; j < n; j++)
 	{
-		for (int i = 0; i < n; i++)
+		for (i = 0; i < n; i++)
 		{
 			printf("%.2lf ", Matrix[i][j]);
 		}
