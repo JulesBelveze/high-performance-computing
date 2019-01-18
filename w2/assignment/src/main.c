@@ -7,6 +7,7 @@
 #include "jacobi_parallel_v2.h"
 #include "jacobi_parallel_v3.h"
 #include "jacobi_parallel_vDanny.h"
+#include "jacobi_parallel_vDanny_1.h"
 
 #include "datatools.h"
 #include "jacobi.h"
