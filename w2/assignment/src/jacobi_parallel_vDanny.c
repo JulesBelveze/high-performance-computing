@@ -46,7 +46,7 @@ void jacobi_parallel_d(int n, int num_iterations, double **f, double **u, double
         c_dist = dist;
         temp = u_old;
         u_old = u;
-        u =  temp;
+        u = temp;
       }
     }
   }
