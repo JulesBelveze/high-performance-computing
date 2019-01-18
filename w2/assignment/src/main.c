@@ -9,16 +9,17 @@
 #include "jacobi_parallel_vDanny.h"
 #include "jacobi_parallel_vDanny_1.h"
 
+#include "jacobi_parallel_vDanny_fast.h"
+
 #include "datatools.h"
 #include "jacobi.h"
 #include "gauss.h"
 
 void print_matrix(int n, double **Matrix)
 {
-	int i,j;
-	for (j = 0; j < n; j++)
+	for (int j = 0; j < n; j++)
 	{
-		for (i = 0; i < n; i++)
+		for (int i = 0; i < n; i++)
 		{
 			printf("%.2lf ", Matrix[i][j]);
 		}
@@ -106,12 +107,17 @@ int main(int argc, char *argv[])
 	else if (poisson == 6)
 	{
 		// DANNY V_2
-		jacobi_parallel_d(N, num_iterations,f,u, threshold);
+		jacobi_parallel_d(N, num_iterations, f, u, threshold);
 	}
 	else if (poisson == 7)
 	{
 		// DANNY V_1
-		jacobi_paralleld_one(N, num_iterations,f,u, threshold);
+		jacobi_paralleld_one(N, num_iterations, f, u, threshold);
+	}
+	else if (poisson == 8)
+	{
+		// DANNY V_1
+		jacobi_parallel_d_fast(N, num_iterations, f, u, threshold);
 	}
 	else
 	{
