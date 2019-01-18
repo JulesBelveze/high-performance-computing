@@ -26,6 +26,7 @@ void gauss(int N, int num_iterations, double **f, double **u_new, double thresho
 				dist += (u_new[i][j] - u_old) * (u_new[i][j] - u_old);
 			}
 		}
+		//dist = (double)sqrt((double)dist);
 		k += 1;
 	}
 
