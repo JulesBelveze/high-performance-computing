@@ -14,7 +14,7 @@ void jacobi_parallel_naive(int N, int num_iterations, double **f, double **u, do
 
 	double **temp = NULL;
 
-#pragma omp parallel for private(i, j, u_old)
+#pragma omp parallel for private(i, j)
 	for (i = 0; i <= N + 1; i++)
 	{
 		for (j = 0; j <= N + 1; j++)
