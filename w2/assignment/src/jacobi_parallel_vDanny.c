@@ -13,18 +13,17 @@ void jacobi_parallel_d(int n, int num_iterations, double **f, double **u, double
   double dist = 100000000000.0;
   double **u_old = malloc_2d(n + 2, n + 2);
 
-#pragma omp parallel for private(i, j)
-  for (i = 0; i <= n + 1; i++)
-  {
-    for (j = 0; j <= n + 1; j++)
-    {
-      u_old[i][j] = u[i][j];
-    }
-  }
-
 #pragma omp parallel default(none) firstprivate(k) shared(n, u, u_old, num_iterations, threshold, f, delta_square, temp, c_dist) private(j, i) reduction(+ \
                                                                                                                                                          : dist)
   {
+#pragma omp for private(i, j)
+    for (i = 0; i <= n + 1; i++)
+    {
+      for (j = 0; j <= n + 1; j++)
+      {
+        u_old[i][j] = u[i][j];
+      }
+    }
 
     while (k < num_iterations && c_dist > threshold)
     {
