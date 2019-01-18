@@ -36,9 +36,5 @@ set terminal jpeg
 set output "S(P)_different_versions_compiler_optim.jpeg"
 
 
-plot file1 using ($2):(16.15/$1) with linespoints ls 3 title "Naive", x with lines ls 2 title "Ideal", file2 using ($2):(16.15/$1) with linespoints ls 4 title "Version 2", file3 using ($2):(16.15/$1) with linespoints ls 1 title "Version 3",file4 using ($2):(16.15/$1) with linespoints ls 5 title "Version 4",file5 using ($2):(16.15/$1) with linespoints ls 6 title "Version 5"
+plot file1 using ($2):(14.15/$1) with linespoints ls 3 title "Naive", x with lines ls 2 title "Ideal", file2 using ($2):(16.14/$1) with linespoints ls 4 title "Version 2", file3 using ($2):(16.12/$1) with linespoints ls 1 title "Version 3",file4 using ($2):(16.08/$1) with linespoints ls 5 title "Version 4",file5 using ($2):(16.17/$1) with linespoints ls 6 title "Version 5"
 
-# 16.73 1
-# 18.00 2
-# 16.91 4
-# 17.07 8
