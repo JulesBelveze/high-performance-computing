@@ -47,6 +47,7 @@ void calc(int N, int num_iterations, double **f, double **u, double threshold)
 		u_old = temp;
 		k += 1;
 	}
+	printf("Iterations: %d\nDistance: %.18f\n", k, dist);
 }
 
 void jacobi_parallel_3(int N, int num_iterations, double **f, double **u, double threshold)
