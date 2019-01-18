@@ -37,7 +37,6 @@ void jacobi(int N, int num_iterations, double **f, double **u, double threshold)
 				dist += (u[i][j] - u_old[i][j]) * (u[i][j] - u_old[i][j]);
 			}
 		}
-		// memory address movearound thing idea...
 		temp = u;
 		u = u_old;
 		u_old = temp;
