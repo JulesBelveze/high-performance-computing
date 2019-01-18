@@ -56,7 +56,7 @@ void jacobi_test(const int n, const int m, double dx, double dy, double alpha,
             }
         /* error check */
         k++;
-        error = sqrt(error) / (n * m);
+        error = error / (n * m);
 
     } /* while */
     printf("Total Number of Iteratuons %d\n", k);

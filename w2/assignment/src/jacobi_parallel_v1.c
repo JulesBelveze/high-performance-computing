@@ -14,6 +14,7 @@ void jacobi_parallel_1(int N, int num_iterations, double **f, double **u, double
 
 	double **temp = NULL;
 
+
 #pragma omp parallel for private(i, j)
 	for (i = 0; i <= N + 1; i++)
 	{
