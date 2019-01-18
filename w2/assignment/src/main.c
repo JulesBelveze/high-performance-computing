@@ -104,9 +104,13 @@ int main(int argc, char *argv[])
 	}
 	else if (poisson == 6)
 	{
-		// printf("Danny parallel\n");
-		// printf("N: %d\n", N);
+		// DANNY V_2
 		jacobi_parallel_d(N, num_iterations,f,u, threshold);
+	}
+	else if (poisson == 7)
+	{
+		// DANNY V_1
+		jacobi_paralleld_one(N, num_iterations,f,u, threshold);
 	}
 	else
 	{
