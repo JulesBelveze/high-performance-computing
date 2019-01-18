@@ -4,6 +4,10 @@ Repo for HPC course at DTU
 Piazza Link: https://piazza.com/class/jpwofdl793d7dd?cid=6
 Coursebase Link: http://kurser.dtu.dk/course/02614
 
+```bash
+make clean ; make ; ./bin/jacob_gauss.gcc-8 6 1000 1000 0.001
+```
+
 ## Submit file
 
 ```bash
