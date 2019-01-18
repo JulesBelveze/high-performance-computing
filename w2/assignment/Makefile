@@ -1,5 +1,5 @@
 CC		  := gcc
-C_FLAGS := -Wall -Wextra -g -Ofast -fopenmp
+C_FLAGS := -Wall -Wextra -g -fopenmp
 EXECUTABLE	:= jacob_gauss.$(CC)
 
 BIN  := bin
