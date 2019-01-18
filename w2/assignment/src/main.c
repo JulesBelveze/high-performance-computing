@@ -6,6 +6,7 @@
 #include "jacobi_parallel_naive.h"
 #include "jacobi_parallel_v2.h"
 #include "jacobi_parallel_v3.h"
+#include "jacobi_parallel_vDanny.h"
 
 #include "datatools.h"
 #include "jacobi.h"
@@ -100,6 +101,12 @@ int main(int argc, char *argv[])
 		// printf("Jacobi parallel\n");
 		// printf("N: %d\n", N);
 		jacobi_parallel_3(N, num_iterations, f, u, threshold);
+	}
+	else if (poisson == 6)
+	{
+		// printf("Danny parallel\n");
+		// printf("N: %d\n", N);
+		jacobi_parallel_d(N, num_iterations,f,u, threshold);
 	}
 	else
 	{
