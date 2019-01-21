@@ -89,6 +89,8 @@ int main(int argc, char *argv[])
 	}
 	else if (poisson == 3)
 	{
+		printf("Unsupported function \n please choose one number between [0,1,2,4,5,6,8]\n");
+		exit(EXIT_FAILURE);
 		// printf("Jacobi parallel\n");
 		// printf("N: %d\n", N);
 		jacobi_parallel_1(N, num_iterations, f, u, threshold);
@@ -112,6 +114,8 @@ int main(int argc, char *argv[])
 	}
 	else if (poisson == 7)
 	{
+		printf("Unsupported function \n please choose one number between [0,1,2,4,5,6,8]\n");
+		exit(EXIT_FAILURE);
 		// DANNY V_1
 		jacobi_paralleld_one(N, num_iterations, f, u, threshold);
 	}

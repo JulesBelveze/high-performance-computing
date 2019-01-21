@@ -1,14 +1,14 @@
-file1= "unoptimized/naive.txt"
-file2 = "unoptimized/v2.txt"
-file3 = "unoptimized/v3.txt"
-file4 = "unoptimized/v4.txt"
-file5 = "unoptimized/v5.txt"
+file1= "unoptimized/2.txt"
+file2 = "unoptimized/4.txt"
+file3 = "unoptimized/5.txt"
+file4 = "unoptimized/6.txt"
+file5 = "unoptimized/s.txt"
 
-set terminal jpeg size 900,600 enhanced font 'Computer modern,12' dashlength 2.0
+set terminal jpeg size 1900,1600 enhanced font 'Computer modern,24' dashlength 2.0
 
 set tmargin at screen 0.90
 set bmargin at screen 0.13
-set  rmargin at screen 0.94
+set rmargin at screen 0.94
 set lmargin at screen 0.15
 symbsize=1.2
 set yrange [0:8]
@@ -24,8 +24,8 @@ set style line 6 dt 1 lc rgb "yellow" pt 6 lw 2.5
 
 set size 1,1
 set border lw 2.0
-set pointsize 0.8
-set bars 0.5
+set pointsize 1
+set bars 1
 
 
 set xlabel "Threads"
@@ -33,7 +33,8 @@ set ylabel "S(P)"
 set size 1,1
 set key left top
 set terminal jpeg
-set output "S(P)_different_versions_compiler_optim.jpeg"
+set output "S(P)_different_versions_without_optim.jpeg"
 
 
-plot file1 using ($2):(2.17/$1) with linespoints ls 3 title "Naive", x with lines ls 2 title "Ideal", file2 using ($2):(2.06/$1) with linespoints ls 4 title "Version 2", file3 using ($2):(2.18/$1) with linespoints ls 1 title "Version 3",file4 using ($2):(2.18/$1) with linespoints ls 5 title "Version 4",file5 using ($2):(2.18/$1) with linespoints ls 6 title "Version 5"
+plot file1 using ($2):(129.58/$1) with linespoints ls 3 title "Naive", x with lines ls 2 title "Ideal", file2 using ($2):(132.77 /$1) with linespoints ls 4 title "Version 2", file3 using ($2):(132.44/$1) with linespoints ls 1 title "Version 3",file4 using ($2):(129.87/$1) with linespoints ls 5 title "Version 4",file5 using ($2):(119.28/$1) with linespoints ls 6 title "Version 5"
+
