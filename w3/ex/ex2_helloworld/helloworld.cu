@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <helper_cuda.h>
 
-
-
 void timestamp()
 {
     time_t ltime; /* calendar time */
@@ -10,22 +8,25 @@ void timestamp()
     printf("%s",asctime( localtime(&ltime) ) );
 }
 
-__global__ void use_local_memory()
+__global__ void hello_thread()
 {
   int g_tid = threadIdx.x + blockIdx.x * blockDim.x;
-  // printf("Global Thread ID: %d\n",g_tid);
   int b_tid = threadIdx.x;
-  // printf("Block Thread ID: %d\n",b_tid);
   int bid = blockIdx.x;
-  // printf("Block ID: %d\n",bid);
-  printf("Hello world! I’m thread %d out of 64 in block %d. My global thread id is %d out of 256.\n",b_tid,bid,g_tid);
+  // 258 without if statement
+  // 194 with if statement
+  // 64 lines missing
+  if(g_tid == 100){
+     int *a = (int*) 0x10000; *a = 0;
+  }
+  printf("Hello world! I’m thread %d out of %d in block %d. My global thread id is %d out of %d.\n",b_tid,blockDim.x,bid,g_tid,gridDim.x*blockDim.x);
 }
 
 #define N 256
 int main() {
   printf("Hello World!\n");
   timestamp();
-  // Launch kernel using 30 threads per block
-  use_local_memory<<<N/30, 30>>>();
+  // Launch kernel using 64 threads per block
+  hello_thread<<<N/64, 64>>>();
   cudaDeviceSynchronize();
 }
