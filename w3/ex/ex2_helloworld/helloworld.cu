@@ -22,11 +22,13 @@ __global__ void hello_thread()
   printf("Hello world! I’m thread %d out of %d in block %d. My global thread id is %d out of %d.\n",b_tid,blockDim.x,bid,g_tid,gridDim.x*blockDim.x);
 }
 
-#define N 256
+#define total_threads 256
+#define threads_per_block 64
 int main() {
   printf("Hello World!\n");
   timestamp();
   // Launch kernel using 64 threads per block
-  hello_thread<<<N/64, 64>>>();
-  cudaDeviceSynchronize();
+  hello_thread<<<total_threads/threads_per_block, threads_per_block>>>();
+  // cudaDeviceSynchronize();
+  checkCudaErrors(cudaDeviceSynchronize());
 }
