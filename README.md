@@ -1,8 +1,9 @@
 # HPC
 Repo for HPC course at DTU
 
-Piazza Link: https://piazza.com/class/jpwofdl793d7dd?cid=6
-Coursebase Link: http://kurser.dtu.dk/course/02614
+Useful links:
+* [Piazza](https://piazza.com/class/jpwofdl793d7dd?cid=6)
+* [Coursebase](http://kurser.dtu.dk/course/02614)
 
 ## Week 3
 
@@ -30,6 +31,8 @@ free
 
 
 ```
+
+$a \times b$
 
 
 ## Week 1 & 2

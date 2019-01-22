@@ -11,15 +11,14 @@ extern "C" {
 #define TILE_SIZE 4
 
 extern "C" {
+// naive
 void matmult_nat(int m, int n, int k, double *A, double *B, double *C)
 {
-    // Initializing C
     int i, j;
     for (i = 0; i < m; i++)
         for (j = 0; j < n; j++)
             C[i * n + j] = 0.0;
 
-    // Perform multiplication A*B
     int t, q;
     for (i = 0; i < m; i++)
         for (j = 0; j < n; j++)
@@ -27,16 +26,17 @@ void matmult_nat(int m, int n, int k, double *A, double *B, double *C)
                 C[i * n + j] += A[i * k + q] * B[t * n + j];
 }
 
+// cblas dgemm
 void matmult_lib(int m, int n, int k, double *A, double *B, double *C)
 {
     cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1, A, k, B, n, 0, C, n);
 }
 
+//
 void matmult_gpu1(int m, int n, int k, double *h_A, double *h_B, double *h_C)
 {
     double *d_A, *d_B, *d_C;
 
-    // Allocate memory on device
     cudaMalloc((void **)&d_A, m * k * sizeof(double));
     cudaMalloc((void **)&d_B, k * n * sizeof(double));
     cudaMalloc((void **)&d_C, m * n * sizeof(double));
@@ -229,7 +229,7 @@ void matmult_gpulib(int m, int n, int k, double *h_A, double *h_B, double *h_C)
         printf("Error initializing CUDA runtime.\n");
         return;
     }
-    
+
     // Kernel invocation
     cublasDgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, n, m, k, &alpha, d_B, n, d_A, k, &beta, d_C, n);
 
