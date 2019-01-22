@@ -1,5 +1,5 @@
 TARGET	= libmatmult.so
-LIBSRCS	=
+LIBSRCS	= 
 LIBOBJS	= matmultlib.o matmultgpu.o
 
 OPT	= -g -O3 -lm
@@ -12,8 +12,7 @@ XARCH = -arch=sm_70
 CXX	= nvcc
 CXXFLAGS = --compiler-options "$(OPT) $(PIC) $(OMP)" $(XARCH) $(XOPT) $(XPIC)
 
-# CUDA_PATH ?= /appl/cuda/9.1
-CUDA_PATH ?= /appl/cuda/10.0
+CUDA_PATH ?= /appl/cuda/9.1
 INCLUDES = -I$(CUDA_PATH)/include -I$(CUDA_PATH)/samples/common/inc
 
 SOFLAGS = -shared
@@ -27,4 +26,4 @@ $(TARGET): $(LIBOBJS)
 	$(CXX) -o $*.o -c $*.cu $(CXXFLAGS) $(SOFLAGS) $(INCLUDES)
 
 clean:
-	/bin/rm -f $(TARGET) $(LIBOBJS)
+	/bin/rm -f $(TARGET) $(LIBOBJS) 
