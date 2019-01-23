@@ -29,14 +29,14 @@ void matmult_gpu1(int m, int n, int k,  double *a, double *b, double *c){
     cudaMemcpy(d_a, a, n*k*sizeof(double), cudaMemcpyHostToDevice);
     cudaMemcpy(d_b, b, k*m*sizeof(double), cudaMemcpyHostToDevice);
 
-    double time = omp_get_wtime();
+    // double time = omp_get_wtime();
     gpu1<<<1,1>>>(m, n, k, d_a, d_b, d_c);
 
     cudaDeviceSynchronize();
-    double elapsed = omp_get_wtime() - time;
+    // double elapsed = omp_get_wtime() - time;
 
     // copying output to host
-    cudaMemcpy(c, d_c, n*sizeof(double), cudaMemcpyDeviceToHost);
+    cudaMemcpy(c, d_c, m*n*sizeof(double), cudaMemcpyDeviceToHost);
 
     cudaFree(d_a); cudaFree(d_b); cudaFree(d_c);
 }

@@ -8,13 +8,13 @@ __global__
 void gpu1(int m, int n, int k, double *a, double *b, double *c){
     int i, j, p;
 
-    for(i = 0; i < m*n; i++){
+    for (i = 0; i < m*n; i++){
         c[i] = 0.0;
     }
 
     for(i = 0; i < m; i++){
         for(p = 0; p < k; p++){
-            for(j = 0; j < m; j++){
+            for(j = 0; j < n; j++){
                 c[i*n+j] += a[i*k+p]*b[p*n+j];
             }
         }
@@ -92,7 +92,7 @@ void gpu4(int m, int n, int k, double *a, double *b, double *c){
 
 
 __global__
-void kernel5(int m, int n, int k, double *a, double *b, double *c) {
+void gpu5(int m, int n, int k, double *a, double *b, double *c) {
 
 	int i,j,r,s;
 
