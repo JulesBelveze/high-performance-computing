@@ -12,7 +12,6 @@ int MIN_(int a, int b)
 {
     return (a < b) ? a : b;
 }
-
 void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
 {
     // m : number of rows of A
@@ -33,7 +32,6 @@ void matmult_nat(int m, int n, int k, double **A, double **B, double **C)
         }
     }
 }
-
 void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
 {
     int i, j, p;
@@ -53,7 +51,6 @@ void matmult_mnk(int m, int n, int k, double **A, double **B, double **C)
         }
     }
 }
-
 void matmult_mkn(int m, int n, int k, double **A, double **B, double **C)
 {
     int i, j, p;
@@ -73,7 +70,6 @@ void matmult_mkn(int m, int n, int k, double **A, double **B, double **C)
         }
     }
 }
-
 void matmult_nmk(int m, int n, int k, double **A, double **B, double **C)
 {
     int i, j, p;
@@ -112,7 +108,6 @@ void matmult_nkm(int m, int n, int k, double **A, double **B, double **C)
         }
     }
 }
-
 void matmult_kmn(int m, int n, int k, double **A, double **B, double **C)
 {
     int i, j, p;
@@ -151,12 +146,10 @@ void matmult_knm(int m, int n, int k, double **A, double **B, double **C)
         }
     }
 }
-
 void matmult_lib(int m, int n, int k, double **A, double **B, double **C)
 {
     cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, 1.0, A[0], k, B[0], n, 0.0, C[0], n);
 }
-
 void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs)
 {
     // m : number of rows of A
@@ -196,14 +189,3 @@ void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs
         }
     }
 }
-
-// // TODO: This test can be deleted if plots are working
-// int main()
-// {
-//     for (int i = 0; i < 100; i++)
-//     {
-//         for (int j = 0; j < i*i; j++)
-//         {
-//         }
-//     }
-// }
