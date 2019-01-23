@@ -1,5 +1,6 @@
 // GPU Sequential version v1
 
+__global__
 void gpu1(int m, int n, int k, double *a, double *b, double *c){
     int i, j, p;
 
