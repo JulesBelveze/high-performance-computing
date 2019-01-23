@@ -46,7 +46,7 @@ void matmult_gpu3(int m, int n, int k, double *a, double *b, double *c){
     cudaMemcpy(d_a, a, n*k*sizeof(double), cudaMemcpyHostToDevice);
     cudaMemcpy(d_b, b, k*m*sizeof(double), cudaMemcpyHostToDevice);
 
-    gpu2<<<dimGrid,dimBlock>>>(m, n, k, d_a, d_b, d_c);
+    gpu3<<<dimGrid,dimBlock>>>(m, n, k, d_a, d_b, d_c);
     cudaDeviceSynchronize();
 
     cudaMemcpy(c, d_c, m * n * sizeof(double), cudaMemcpyDeviceToHost);
