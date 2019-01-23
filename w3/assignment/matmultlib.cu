@@ -4,9 +4,12 @@ extern "C" {
 #include <stdio.h>
 #include <omp.h>
 }
+#include "matmultgpu.h"
+#include <helper_cuda.h>
+#include "cublas_v2.h"
+#define nb_elt 10
 
 extern "C" {
-#define nb_elt 10
 
 // cblas dgemm
 void matmult_lib(int m, int n, int k, double *A, double *B, double *C)
@@ -141,7 +144,7 @@ matmult_gpu5(int m, int n, int k, double *a, double *b, double *c) {
     dim3 dimBlock(16,16,1);
     dim3 dimGrid(k1,k2,1);
 
-    kernel5<<<dimGrid,dimBlock>>>(m, n, k, a_gpu, b_gpu, c_gpu);
+    gpu5<<<dimGrid,dimBlock>>>(m, n, k, a_gpu, b_gpu, c_gpu);
     cudaDeviceSynchronize();
 
     cudaMemcpy(c, c_gpu, m * n * sizeof(double), cudaMemcpyDeviceToHost);
