@@ -2,7 +2,7 @@ extern "C" {
 #include <stdio.h>
 }
 
-#define nb_elt 10
+#define nb_elt 8
 
 __global__
 void gpu1(int m, int n, int k, double *a, double *b, double *c){
@@ -30,60 +30,61 @@ void gpu2(int m, int n, int k, double *a, double *b, double *c){
     x = blockIdx.x*blockDim.x + threadIdx.x; // col
     y = blockIdx.y*blockDim.y + threadIdx.y; // row
 
-    for(i = 0; i < k; i++){
-        sum += a[y*k+i]*b[i*n + x];
+    if (y < m && x < n) {
+        for(i = 0; i < k; i++){
+            sum += a[y*k+i]*b[i*n + x];
+        }
+        c[y*n + x] = sum;
     }
 
-    c[y*k + x] = sum;
+
 }
 
 __global__
 void gpu3(int m, int n, int k, double *a, double *b, double *c){
     int x, y, i;
-    double sum1 = 0.0, sum2 = 0.0;
+	double sum=0.0, sum2=0.0;
 
-    x = blockIdx.x*blockDim.x + threadIdx.x; // col
-    y = blockIdx.y*blockDim.y + threadIdx.y; // row
+	y = blockIdx.y*blockDim.y + threadIdx.y;
+	x = 2*(blockIdx.x*blockDim.x + threadIdx.x);
 
-    if( y == n-1){
-        // if we are in the last row we only compute one element
-        for(i = 0; i < k; i++){
-            sum1 += a[y*k+i]*b[i*n + x];
-        }
-        c[y*k + x] = sum1;
-
-    }else{
-        // otherwise we can compute two elements
-        for(i = 0; i < k; i++){
-            sum1 += a[y*k+i]*b[i*n + x];
-            sum2 += a[y*k+i+1]*b[i*n + x];
-        }
-
-        c[y*k + x] = sum1;
-        c[y*k + x+1] = sum2;
-    }
+	if ((y < m) && (x < n-1)) {
+		for(i = 0; i < k; i++){
+			sum += a[y*k+i]*b[i*n + x];
+			sum2 += a[y*k+i]*b[i*n + x +1];
+			}
+		c[y*n+x] = sum;
+		c[y*n+x+1] = sum2;
+	}
+	else if ((y < m) && (x == n-1)){
+		for(i = 0; i < k; i++){
+			sum += a[y*k+i]*b[i*n + x];
+			}
+		c[y*n+x] = sum;
+	}
 }
 
 
 __global__
 void gpu4(int m, int n, int k, double *a, double *b, double *c){
-    int i,j,l,t;
+    int x,y,l,t;
 
-    i = nb_elt*(blockIdx.y*blockDim.y+threadIdx.y);
-    j = blockIdx.x*blockDim.x+threadIdx.x;
 
-    if (i < m-nb_elt && j < n) {
+    y = nb_elt*(blockIdx.y*blockDim.y+threadIdx.y);
+    x = blockIdx.x*blockDim.x+threadIdx.x;
+
+    if (y < m-nb_elt && x < n) {
         for (t = 0; t < nb_elt; t++) {
             for (l = 0; l < k; l++) {
-                c[(i+t)*n+j] += a[(i+t)*k+l]*b[l*n+j];
+                c[(y+t)*n+x] += a[(y+t)*k+l]*b[l*n+x];
             }
         }
     }
-    else if (i < m && j < n) {
+    else if (y < m && x < n) {
         for (t = 0; t < nb_elt; t++) {
-            if (i+t < m) {
+            if (y+t < m) {
                 for (l = 0; l < k; l++) {
-                    c[(i+t)*n+j] += a[(i+t)*k+l]*b[l*n+j];
+                    c[(y+t)*n+x] += a[(y+t)*k+l]*b[l*n+x];
                 }
             }
         }

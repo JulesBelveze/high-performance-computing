@@ -7,7 +7,7 @@ extern "C" {
 #include "matmultgpu.h"
 #include <helper_cuda.h>
 #include "cublas_v2.h"
-#define nb_elt 10
+#define nb_elt 8
 
 extern "C" {
 
@@ -21,19 +21,21 @@ void matmult_gpu1(int m, int n, int k,  double *a, double *b, double *c){
     double *d_a, *d_b, *d_c;
 
     // allocate space for device copies
-    cudaMalloc((void **)&d_a, n*k*sizeof(double));
-    cudaMalloc((void **)&d_b, k*m*sizeof(double));
+    cudaMalloc((void **)&d_a, m*k*sizeof(double));
+    cudaMalloc((void **)&d_b, k*n*sizeof(double));
     cudaMalloc((void **)&d_c, m*n*sizeof(double));
 
     // copying input to device
     cudaMemcpy(d_a, a, n*k*sizeof(double), cudaMemcpyHostToDevice);
     cudaMemcpy(d_b, b, k*m*sizeof(double), cudaMemcpyHostToDevice);
 
-    // double time = omp_get_wtime();
+    double time = omp_get_wtime();
     gpu1<<<1,1>>>(m, n, k, d_a, d_b, d_c);
 
     cudaDeviceSynchronize();
-    // double elapsed = omp_get_wtime() - time;
+    double elapsed = omp_get_wtime() - time;
+
+    printf("%f \n", elapsed);
 
     // copying output to host
     cudaMemcpy(c, d_c, m*n*sizeof(double), cudaMemcpyDeviceToHost);
@@ -53,13 +55,13 @@ void matmult_gpu2(int m, int n, int k, double *a, double *b, double *c){
     dim3 dimGrid(k1,k2,1);
 
     // allocate space for device copies
-    cudaMalloc((void **)&d_a, n*k*sizeof(double));
-    cudaMalloc((void **)&d_b, k*m*sizeof(double));
+    cudaMalloc((void **)&d_a, m*k*sizeof(double));
+    cudaMalloc((void **)&d_b, k*n*sizeof(double));
     cudaMalloc((void **)&d_c, m*n*sizeof(double));
 
     // copying input to device
-    cudaMemcpy(d_a, a, n*k*sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_b, b, k*m*sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_a, a, m*k*sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b, k*n*sizeof(double), cudaMemcpyHostToDevice);
 
     gpu2<<<dimGrid,dimBlock>>>(m, n, k, d_a, d_b, d_c);
     cudaDeviceSynchronize();
@@ -81,13 +83,13 @@ void matmult_gpu3(int m, int n, int k, double *a, double *b, double *c){
 	dim3 dimGrid((k1-1)/2+1,k2,1);
 
     // allocate space for device copies
-    cudaMalloc((void **)&d_a, n*k*sizeof(double));
-    cudaMalloc((void **)&d_b, k*m*sizeof(double));
+    cudaMalloc((void **)&d_a, m*k*sizeof(double));
+    cudaMalloc((void **)&d_b, k*n*sizeof(double));
     cudaMalloc((void **)&d_c, m*n*sizeof(double));
 
     // copying input to device
-    cudaMemcpy(d_a, a, n*k*sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_b, b, k*m*sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_a, a, m*k*sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b, k*n*sizeof(double), cudaMemcpyHostToDevice);
 
     gpu3<<<dimGrid,dimBlock>>>(m, n, k, d_a, d_b, d_c);
     cudaDeviceSynchronize();
@@ -109,13 +111,13 @@ void matmult_gpu4(int m, int n, int k, double *a, double *b, double *c){
 	dim3 dimGrid(k1,(k2-1)/nb_elt+1,1);
 
     // allocate space for device copies
-    cudaMalloc((void **)&d_a, n*k*sizeof(double));
-    cudaMalloc((void **)&d_b, k*m*sizeof(double));
+    cudaMalloc((void **)&d_a, m*k*sizeof(double));
+    cudaMalloc((void **)&d_b, k*n*sizeof(double));
     cudaMalloc((void **)&d_c, m*n*sizeof(double));
 
     // copying input to device
-    cudaMemcpy(d_a, a, n*k*sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_b, b, k*m*sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_a, a, m*k*sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b, k*n*sizeof(double), cudaMemcpyHostToDevice);
 
     gpu4<<<dimGrid,dimBlock>>>(m, n, k, d_a, d_b, d_c);
     cudaDeviceSynchronize();
@@ -129,34 +131,34 @@ void matmult_gpu4(int m, int n, int k, double *a, double *b, double *c){
 void
 matmult_gpu5(int m, int n, int k, double *a, double *b, double *c) {
 
-    double *a_gpu, *b_gpu, *c_gpu;
+    double *d_a, *d_b, *d_c;
     int k1, k2;
 
-    cudaMalloc((void **) &a_gpu, m * k * sizeof(double));
-    cudaMalloc((void **) &b_gpu, k * n * sizeof(double));
-    cudaMalloc((void **) &c_gpu, m * n * sizeof(double));
+    cudaMalloc((void **) &d_a, m * k * sizeof(double));
+    cudaMalloc((void **) &d_b, k * n * sizeof(double));
+    cudaMalloc((void **) &d_c, m * n * sizeof(double));
 
-    cudaMemcpy(a_gpu, a, m * k * sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(b_gpu, b, k * n * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_a, a, m * k * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b, k * n * sizeof(double), cudaMemcpyHostToDevice);
 
     k1 = (n-1)/16+1;
     k2 = (m-1)/16+1;
     dim3 dimBlock(16,16,1);
     dim3 dimGrid(k1,k2,1);
 
-    gpu5<<<dimGrid,dimBlock>>>(m, n, k, a_gpu, b_gpu, c_gpu);
+    gpu5<<<dimGrid,dimBlock>>>(m, n, k, d_a, d_b, d_c);
     cudaDeviceSynchronize();
 
-    cudaMemcpy(c, c_gpu, m * n * sizeof(double), cudaMemcpyDeviceToHost);
+    cudaMemcpy(c, d_c, m * n * sizeof(double), cudaMemcpyDeviceToHost);
 
-    cudaFree(a_gpu);
-    cudaFree(b_gpu);
-    cudaFree(c_gpu);
+    cudaFree(d_a);
+    cudaFree(d_b);
+    cudaFree(d_c);
 
 }
 
-void matmult_gpulib(int m, int n, int k, double *h_A, double *h_B, double *h_C)
-{
+void
+matmult_gpulib(int m, int n, int k, double *a, double *b, double *c) {
     const double alpha = 1.0, beta = 0.0;
     double *d_A, *d_B, *d_C;
 
@@ -172,8 +174,8 @@ void matmult_gpulib(int m, int n, int k, double *h_A, double *h_B, double *h_C)
     }
 
     // Copy data from host to device
-    cudaMemcpy(d_A, h_A, m * k * sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_B, h_B, k * n * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_A, a, m * k * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_B, b, k * n * sizeof(double), cudaMemcpyHostToDevice);
 
 
     // Create handle for CUBLAS
@@ -193,7 +195,7 @@ void matmult_gpulib(int m, int n, int k, double *h_A, double *h_B, double *h_C)
     checkCudaErrors(cudaDeviceSynchronize());
 
     // Copy result back to host
-    cudaMemcpy(h_C, d_C, m * n * sizeof(double), cudaMemcpyDeviceToHost);
+    cudaMemcpy(c, d_C, m * n * sizeof(double), cudaMemcpyDeviceToHost);
 
     // Cleanup
     cudaFree(d_A);
