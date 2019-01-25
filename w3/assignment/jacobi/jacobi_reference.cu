@@ -293,9 +293,9 @@ void jacobi_gpu3(int N, int num_iterations, double *h_f, double *h_U)
   for (k = 0; k < num_iterations; k++)
   {
     cudaSetDevice(0);
-    kernel30<<<num_blocks, threads_per_block>>>(N, d0_U_old, d0_U_new, d0_f, delta);
+    kernel30<<<num_blocks, threads_per_block>>>(N, d0_U_old, d0_U_new, d0_f, delta_square);
     cudaSetDevice(1);
-    kernel31<<<num_blocks, threads_per_block>>>(N, d1_U_old, d1_U_new, d1_f, delta);
+    kernel31<<<num_blocks, threads_per_block>>>(N, d1_U_old, d1_U_new, d1_f, delta_square);
     checkCudaErrors(cudaDeviceSynchronize());
 
     // Swap the pointers on the CPU
