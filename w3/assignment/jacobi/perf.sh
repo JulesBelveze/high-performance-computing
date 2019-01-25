@@ -18,7 +18,7 @@ types=(cpu gpu1 gpu2 gpu3)
 for type in ${types[*]};do
     for i in $SIZES; do
     for j in `seq 1 1 3`; do
-        OMP_NUM_THREADS=12 ./$EXECUTABLE $type $i $i $i > results/${type}_${i}_${j} 2>&1
+        OMP_NUM_THREADS=12 ./$EXECUTABLE $type $i $i > results/${type}_${i}_${j} 2>&1
     done
 done
 done
