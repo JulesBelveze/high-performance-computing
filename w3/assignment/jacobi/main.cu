@@ -41,14 +41,14 @@ int main(int argc, char *argv[])
     }
 
     /* Allocate memory*/
-    u     = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
+    u = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
     u_old = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
     u_new = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
-    f     = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
+    f = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
 
     if (u == NULL || u_old == NULL | f == NULL | u_new == NULL)
     {
-        fprintf("Memory allocation error...\n");
+        // fprintf("Memory allocation error...\n");
         exit(EXIT_FAILURE);
     }
 
@@ -80,9 +80,13 @@ int main(int argc, char *argv[])
         jacobi_gpu3(n, num_iterations, f, u);
         te = omp_get_wtime() - ts;
     }
+    printf("Time: %f \n", te);
 
     /* Free memory */
-    cudaFree(u); cudaFree(u_old); cudaFree(u_new); cudaFree(f);
+    free(u);
+    free(u_old);
+    free(u_new);
+    free(f);
 
     return (0);
 }
