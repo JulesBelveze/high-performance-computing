@@ -58,29 +58,20 @@ int main(int argc, char *argv[])
     /* Call the function */
     if (strcmp(type, "cpu") == 0)
     {
-        ts = omp_get_wtime();
         jacobi_cpu(n, num_iterations, f, u);
-        te = omp_get_wtime() - ts;
     }
     else if (strcmp(type, "gpu1") == 0)
     {
-        ts = omp_get_wtime();
         jacobi_gpu1(n, num_iterations, f, u);
-        te = omp_get_wtime() - ts;
     }
     else if (strcmp(type, "gpu2") == 0)
     {
-        ts = omp_get_wtime();
         jacobi_gpu2(n, num_iterations, f, u);
-        te = omp_get_wtime() - ts;
     }
     else if (strcmp(type, "gpu3") == 0)
     {
-        ts = omp_get_wtime();
         jacobi_gpu3(n, num_iterations, f, u);
-        te = omp_get_wtime() - ts;
     }
-    printf("Time: %f \n", te);
 
     /* Free memory */
     free(u);

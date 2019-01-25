@@ -14,11 +14,11 @@ void jacobi_cpu(int n, int num_iterations, double *f, double *u)
   int k = 0, i, j;
   double *temp = NULL;
   double *u_old, *u_new;
-
+  double ts, te;
   u_old = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
   u_new = (double *)malloc((n + 2) * (n + 2) * sizeof(double));
-
-  printf("num: %d \n k: %d \n", num_iterations, k);
+  // Get starting time
+  ts = omp_get_wtime();
 #pragma omp parallel default(none) shared(n, u, u_old, num_iterations, f, delta_square, temp, k, u_new) private(j, i)
   {
 #pragma omp for private(i, j)
@@ -51,6 +51,11 @@ void jacobi_cpu(int n, int num_iterations, double *f, double *u)
       }
     }
   }
+
+  // Get ending time
+  te = omp_get_wtime() - ts;
+  // print results, e.g. timings, data, etc
+  printf("%f\n", te);
 }
 
 __global__ void kernel1(int N, double *mat_old, double *mat_new, double *f, double delta_square)
