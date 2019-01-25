@@ -1,1 +1,1 @@
-CUDA error at jacobi_reference.cu:299 code=77(cudaErrorIllegalAddress) "cudaDeviceSynchronize()" 
+30.12
