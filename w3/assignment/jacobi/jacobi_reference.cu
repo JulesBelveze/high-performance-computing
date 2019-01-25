@@ -66,7 +66,7 @@ __global__ void kernel1(int N, double *mat_old, double *mat_new, double *f, doub
   {
     for (j = 1; j < N - 1; j++)
     {
-      mat_new[i * N + j] = (1.0 / 4.0) * (mat_old[i * N + (j - 1)] + mat_old[i * N + (j + 1)] + mat_old[(i + 1) * N + j] + mat_old[(i - 1) * N + j] + delta_square * f[i * N + j]);
+      mat_new[i * N + j] = 0.25 * (mat_old[i * N + (j - 1)] + mat_old[i * N + (j + 1)] + mat_old[(i + 1) * N + j] + mat_old[(i - 1) * N + j] + delta_square * f[i * N + j]);
     }
   }
 }
@@ -139,7 +139,7 @@ __global__ void naive_kernel(int N, double *mat_old, double *mat_new, double *f,
     mat_new[i * N + j] = mat_old[i * N + j];
   else
   {
-    mat_new[i * N + j] = (1.0 / 4.0) * (mat_old[i * N + (j - 1)] + mat_old[i * N + (j + 1)] + mat_old[(i + 1) * N + j] + mat_old[(i - 1) * N + j] + delta_square * f[i * N + j]);
+    mat_new[i * N + j] = 0.25 * (mat_old[i * N + (j - 1)] + mat_old[i * N + (j + 1)] + mat_old[(i + 1) * N + j] + mat_old[(i - 1) * N + j] + delta_square * f[i * N + j]);
   }
 }
 
