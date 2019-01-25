@@ -257,6 +257,7 @@ void jacobi_gpu3(int N, int num_iterations, double *h_f, double *h_U)
 
   // Device 0
   cudaSetDevice(0);
+  cudaDeviceEnablePeerAccess(1, 0);
   // allocate memory for the necessary data fields
   cudaMalloc((void **)&d0_U, N / 2 * N * sizeof(double));
   cudaMalloc((void **)&d0_U_new, N / 2 * N * sizeof(double));
