@@ -7,9 +7,9 @@ extern "C" {
 #include "matmultgpu.h"
 #include <helper_cuda.h>
 #include "cublas_v2.h"
-#define nb_elt 8
 
 extern "C" {
+#define NB_ELT 11
 
 // cblas dgemm
 void matmult_lib(int m, int n, int k, double *A, double *B, double *C)
@@ -108,7 +108,7 @@ void matmult_gpu4(int m, int n, int k, double *a, double *b, double *c){
     k1 = (n-1)/16+1;
     k2 = (m-1)/16+1;
     dim3 dimBlock(16,16,1);
-	dim3 dimGrid(k1,(k2-1)/nb_elt+1,1);
+	dim3 dimGrid(k1,(k2-1)/NB_ELT+1,1);
 
     // allocate space for device copies
     cudaMalloc((void **)&d_a, m*k*sizeof(double));
@@ -160,25 +160,21 @@ matmult_gpu5(int m, int n, int k, double *a, double *b, double *c) {
 void
 matmult_gpulib(int m, int n, int k, double *a, double *b, double *c) {
     const double alpha = 1.0, beta = 0.0;
-    double *d_A, *d_B, *d_C;
+    double *d_a, *d_b, *d_c;
 
-    // Allocate memory on device
-    cudaMalloc((void **)&d_A, m * k * sizeof(double));
-    cudaMalloc((void **)&d_B, k * n * sizeof(double));
-    cudaMalloc((void **)&d_C, m * n * sizeof(double));
+    cudaMalloc((void **)&d_a, m * k * sizeof(double));
+    cudaMalloc((void **)&d_b, k * n * sizeof(double));
+    cudaMalloc((void **)&d_c, m * n * sizeof(double));
 
-    if (d_A == NULL || d_B == NULL || d_C == NULL)
+    if (d_a == NULL || d_b == NULL || d_c == NULL)
     {
         fprintf(stderr, "memory allocation failed!\n");
         return;
     }
 
-    // Copy data from host to device
-    cudaMemcpy(d_A, a, m * k * sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_B, b, k * n * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_a, a, m * k * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b, k * n * sizeof(double), cudaMemcpyHostToDevice);
 
-
-    // Create handle for CUBLAS
     cublasHandle_t handle;
     if(cublasCreate(&handle)!=CUBLAS_STATUS_SUCCESS)
     {
@@ -186,20 +182,14 @@ matmult_gpulib(int m, int n, int k, double *a, double *b, double *c) {
         return;
     }
 
-    // Kernel invocation
-    cublasDgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, n, m, k, &alpha, d_B, n, d_A, k, &beta, d_C, n);
+    cublasDgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, n, m, k, &alpha, d_b, n, d_a, k, &beta, d_c, n);
 
-    // Destroy handle
     cublasDestroy(handle);
 
     checkCudaErrors(cudaDeviceSynchronize());
 
-    // Copy result back to host
-    cudaMemcpy(c, d_C, m * n * sizeof(double), cudaMemcpyDeviceToHost);
+    cudaMemcpy(c, d_c, m * n * sizeof(double), cudaMemcpyDeviceToHost);
 
-    // Cleanup
-    cudaFree(d_A);
-    cudaFree(d_B);
-    cudaFree(d_C);
+    cudaFree(d_a); cudaFree(d_b); cudaFree(d_c);
 }
 }

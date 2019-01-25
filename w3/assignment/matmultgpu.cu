@@ -1,8 +1,4 @@
-extern "C" {
-#include <stdio.h>
-}
-
-#define nb_elt 8
+#define NB_ELT 11
 
 __global__
 void gpu1(int m, int n, int k, double *a, double *b, double *c){
@@ -36,8 +32,6 @@ void gpu2(int m, int n, int k, double *a, double *b, double *c){
         }
         c[y*n + x] = sum;
     }
-
-
 }
 
 __global__
@@ -70,18 +64,18 @@ void gpu4(int m, int n, int k, double *a, double *b, double *c){
     int x,y,l,t;
 
 
-    y = nb_elt*(blockIdx.y*blockDim.y+threadIdx.y);
+    y = NB_ELT*(blockIdx.y*blockDim.y+threadIdx.y);
     x = blockIdx.x*blockDim.x+threadIdx.x;
 
-    if (y < m-nb_elt && x < n) {
-        for (t = 0; t < nb_elt; t++) {
+    if (y < m-NB_ELT && x < n) {
+        for (t = 0; t < NB_ELT; t++) {
             for (l = 0; l < k; l++) {
                 c[(y+t)*n+x] += a[(y+t)*k+l]*b[l*n+x];
             }
         }
     }
     else if (y < m && x < n) {
-        for (t = 0; t < nb_elt; t++) {
+        for (t = 0; t < NB_ELT; t++) {
             if (y+t < m) {
                 for (l = 0; l < k; l++) {
                     c[(y+t)*n+x] += a[(y+t)*k+l]*b[l*n+x];
