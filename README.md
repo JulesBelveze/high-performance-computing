@@ -2,7 +2,6 @@
 Repo for HPC course at DTU
 
 Useful links:
-* [Piazza](https://piazza.com/class/jpwofdl793d7dd?cid=6)
 * [Coursebase](http://kurser.dtu.dk/course/02614)
 
 ## Week 3
